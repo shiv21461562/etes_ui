@@ -1,5 +1,5 @@
   import { motion } from "framer-motion";
-  import dgef from "../../assets/partners/Dg.png";
+  import dgef from "../../assets/partners/dg.png";
   import interviewWorld from "../../assets/partners/interview.avif";
 
   export default function MediaPartners() {
