@@ -1,6 +1,6 @@
   import { motion } from "framer-motion";
   import dgef from "../../assets/partners/dg.png";
-  import interviewWorld from "../../assets/partners/interview.avif";
+  import interviewWorld from "../../assets/partners/Interview.avif";
 
   export default function MediaPartners() {
     const partners = [
