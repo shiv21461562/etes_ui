@@ -82,15 +82,15 @@ export default function ETES2026() {
   const stats = [
     {
       icon: Calendar,
-      big: "18 – 20",
-      small: "August 2026",
+      big: "23",
+      small: "SEP 2026",
       label: "Event Dates",
     },
     {
       icon: MapPin,
-      big: "India Expo",
+      big: "Scope complex",
       small: "Centre",
-      label: "Greater Noida",
+      label: "New Delhi",
     },
     { icon: Users, big: "5000+", small: "", label: "Participants" },
     { icon: Mic, big: "80+", small: "", label: "Speakers" },

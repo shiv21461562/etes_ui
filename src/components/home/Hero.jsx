@@ -188,7 +188,7 @@ export default function Home() {
                       fontWeight: 600,
                     }}
                   >
-                    18 – 20 August 2026
+                    23rd  SEP 2026
                   </b>
                   Event Dates
                 </span>
@@ -212,9 +212,9 @@ export default function Home() {
                       fontWeight: 600,
                     }}
                   >
-                    India Expo Centre
+                   Scope Complex
                   </b>
-                  Greater Noida
+                 New Delhi
                 </span>
               </div>
               <div

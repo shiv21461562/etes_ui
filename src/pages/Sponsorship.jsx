@@ -66,7 +66,7 @@ const packages = [
   {
     title: "Silver Sponsor",
     icon: Medal,
-    price: "₹2,50,000/- + GST",
+    price: "₹3,00,000/- + GST",
     altPrice: "or 3000 $",
     color: "from-gray-300 to-gray-500",
     border: "border-gray-400",

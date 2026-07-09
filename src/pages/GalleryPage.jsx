@@ -1,15 +1,34 @@
 import React, { useState } from "react";
 import { ZoomIn, ArrowRight, X, ChevronLeft, ChevronRight } from "lucide-react";
 
+// Import all 12 images from gallery folder
+import img1 from "../assets/gallery/image1.jpeg";
+import img2 from "../assets/gallery/image2.jpeg";
+import img3 from "../assets/gallery/image3.jpeg";
+import img4 from "../assets/gallery/image4.jpeg";
+import img5 from "../assets/gallery/image5.jpeg";
+import img6 from "../assets/gallery/image6.jpeg";
+import img7 from "../assets/gallery/image7.jpeg";
+import img8 from "../assets/gallery/image8.jpeg";
+import img9 from "../assets/gallery/image9.jpeg";
+import img10 from "../assets/gallery/image10.jpeg";
+import img11 from "../assets/gallery/image11.jpeg";
+import img12 from "../assets/gallery/image12.jpeg";
+
+// Combine all images into one array
 const galleryImages = [
-  "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=1200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1591115765373-5207764f72e7?q=80&w=1200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1560439514-4e9645039924?q=80&w=1200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=1200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1200&auto=format&fit=crop",
+  img1,
+  img2,
+  img3,
+  img4,
+  img5,
+  img6,
+  img7,
+  img8,
+  img9,
+  img10,
+  img11,
+  img12,
 ];
 
 export default function GalleryPage() {
@@ -54,7 +73,7 @@ export default function GalleryPage() {
             >
               <img
                 src={img}
-                alt=""
+                alt={`Gallery ${index + 1}`}
                 className="w-full h-[260px] object-cover group-hover:scale-110 transition duration-500"
               />
 
@@ -70,6 +89,7 @@ export default function GalleryPage() {
         <div className="text-center mt-16">
           <button className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-yellow-500 hover:bg-yellow-600 text-white font-semibold transition">
             View Full Gallery
+            <ArrowRight size={20} />
           </button>
         </div>
       </section>
@@ -84,7 +104,7 @@ export default function GalleryPage() {
             onClick={() => setSelected(null)}
             className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white flex items-center justify-center hover:scale-110 transition"
           >
-            <X />
+            <X size={24} />
           </button>
 
           {/* Previous */}
@@ -93,14 +113,14 @@ export default function GalleryPage() {
             onClick={prevImage}
             className="absolute left-5 md:left-10 w-12 h-12 rounded-full bg-white flex items-center justify-center hover:scale-110 transition"
           >
-            <ChevronLeft />
+            <ChevronLeft size={24} />
           </button>
 
           {/* Image */}
 
           <img
             src={galleryImages[selected]}
-            alt=""
+            alt={`Gallery ${selected + 1}`}
             className="max-w-[92%] max-h-[88vh] rounded-xl shadow-2xl object-contain"
           />
 
@@ -110,7 +130,7 @@ export default function GalleryPage() {
             onClick={nextImage}
             className="absolute right-5 md:right-10 w-12 h-12 rounded-full bg-white flex items-center justify-center hover:scale-110 transition"
           >
-            <ChevronRight />
+            <ChevronRight size={24} />
           </button>
         </div>
       )}
