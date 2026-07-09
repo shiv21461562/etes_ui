@@ -3,13 +3,43 @@ import { Calendar, MapPin, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-// Keep your existing image imports exactly as before, e.g:
+// Import images
 import about1 from "../assets/about3.avif";
 import about2 from "../assets/about4.avif";
-import speaker1 from "../assets/speaker1.jpg";
-import speaker2 from "../assets/speaker2.jpg";
-import speaker3 from "../assets/speaker3.jpg";
-import speaker4 from "../assets/speaker4.jpg";
+
+// Import only 4 speakers from speakers folder
+import ImteyazSiddiqui from "../assets/speakers/ImteyazSiddiqui.avif";
+import DrDiegoRobalino from "../assets/speakers/DrDiegoRobalino.avif";
+import DrVSKVHarish from "../assets/speakers/DrVSKVHarish.avif";
+import ShashankGupta from "../assets/speakers/ShashankGupta.avif";
+
+// Featured speakers data (only 4)
+const featuredSpeakers = [
+  {
+    name: "Imteyaz Siddiqui",
+    role: "Vice President",
+    org: "Polywater Apac & Gcc",
+    img: ImteyazSiddiqui,
+  },
+  {
+    name: "Dr. Diego Robalino",
+    role: "Global Industry Director",
+    org: "Megger USA",
+    img: DrDiegoRobalino,
+  },
+  {
+    name: "Dr. V.S.K.V Harish",
+    role: "Assistant Professor",
+    org: "NSUT",
+    img: DrVSKVHarish,
+  },
+  {
+    name: "Shashank Gupta",
+    role: "PHD Research Scholar",
+    org: "IIT, Roorkee",
+    img: ShashankGupta,
+  },
+];
 
 // Animation variants
 const fadeInUp = {
@@ -56,15 +86,6 @@ const staggerContainer = {
       staggerChildren: 0.15,
       delayChildren: 0.2,
     },
-  },
-};
-
-const slideInLeft = {
-  hidden: { opacity: 0, x: -50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
   },
 };
 
@@ -116,10 +137,7 @@ export default function AboutPage() {
 
             <Link
               to="/about-details"
-              className="mt-10 inline-flex items-center gap-2 px-8 py-4 rounded-[35px]
-  bg-gradient-to-r from-[#c9962f] to-[#e8b84b]
-  text-[#1a1305] font-semibold uppercase tracking-wider text-sm
-  hover:brightness-110 transition"
+              className="mt-10 inline-flex items-center gap-2 px-8 py-4 rounded-[35px] bg-gradient-to-r from-[#c9962f] to-[#e8b84b] text-[#1a1305] font-semibold uppercase tracking-wider text-sm hover:brightness-110 transition"
             >
               Learn More
             </Link>
@@ -154,8 +172,7 @@ export default function AboutPage() {
         </div>
       </motion.section>
 
-      {/* Speakers */}
-
+      {/* Speakers Section - Circular Layout */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -177,34 +194,48 @@ export default function AboutPage() {
             ETES 2026 Speakers
           </motion.h2>
 
+          <motion.p
+            variants={fadeInUp}
+            className="mt-4 text-gray-600 max-w-2xl mx-auto"
+          >
+            Learn from India's top Electrical, Energy &amp; Utility experts
+            sharing knowledge, insights and innovations.
+          </motion.p>
+
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-10 mt-16"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-16"
           >
-            {[speaker1, speaker2, speaker3, speaker4].map((img, i) => (
+            {featuredSpeakers.map((speaker, index) => (
               <motion.div
-                key={i}
+                key={index}
                 variants={scaleUp}
                 whileHover={{ scale: 1.05 }}
-                className="group"
+                className="group flex flex-col items-center"
               >
-                <div className="relative w-52 h-52 mx-auto">
+                {/* Circular Image */}
+                <div className="relative w-48 h-48 mx-auto">
                   <motion.img
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.3 }}
-                    src={img}
-                    alt={`ETES speaker ${i + 1}`}
-                    className="w-52 h-52 rounded-full object-cover border-4 border-yellow-400 transition duration-300 group-hover:border-yellow-500 group-hover:shadow-[0_0_30px_rgba(212,175,55,0.3)]"
+                    src={speaker.img}
+                    alt={speaker.name}
+                    className="w-48 h-48 rounded-full object-cover "
                   />
-                  {/* Optional: Add speaker names overlay */}
-                  <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-white px-4 py-1 rounded-full shadow-md border border-gray-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                    <span className="text-xs font-semibold text-gray-700">
-                      Speaker {i + 1}
-                    </span>
-                  </div>
+                  {/* Decorative ring */}
+                  <div className="absolute inset-0 rounded-full border-2 border-yellow-400/20 group-hover:border-yellow-400/40 transition-all duration-300 scale-110"></div>
+                </div>
+
+                {/* Speaker Details */}
+                <div className="mt-6 text-center">
+                  <h3 className="text-gray-900 font-bold text-lg">
+                    {speaker.name}
+                  </h3>
+                  <p className="text-gray-600 text-sm">{speaker.role}</p>
+                  <p className="text-gray-500 text-sm">{speaker.org}</p>
                 </div>
               </motion.div>
             ))}
@@ -221,10 +252,15 @@ export default function AboutPage() {
               className="mt-12 inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-yellow-500 text-white px-8 py-3 rounded-full font-semibold uppercase tracking-wider text-sm hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-[0_4px_15px_rgba(212,175,55,0.3)] hover:shadow-[0_8px_25px_rgba(212,175,55,0.4)] hover:gap-3"
             >
               View All Speakers
+            
             </Link>
           </motion.div>
         </div>
       </motion.section>
+
+
+
+      
 
       {/* Why Join */}
       <motion.section
@@ -256,7 +292,8 @@ export default function AboutPage() {
             whileTap={{ scale: 0.95 }}
             className="mt-10 inline-flex items-center gap-2 px-10 py-4 rounded-[30px] bg-gradient-to-r from-[#c9962f] to-[#e8b84b] text-[#1a1305] font-bold uppercase tracking-wider text-sm hover:brightness-110 transition"
           >
-            Discover Why 
+            Discover Why
+            <ArrowRight size={18} />
           </motion.button>
         </div>
       </motion.section>
