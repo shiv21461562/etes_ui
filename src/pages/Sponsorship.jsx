@@ -12,6 +12,18 @@ import {
   ArrowRight,
   CheckCircle,
 } from "lucide-react";
+{/* PACKAGES */}
+import platinumLogo from '../assets/SponsorshipLogo/platinum.png'; // adjust path as needed
+import goldLogo from '../assets/SponsorshipLogo/gold.png';
+import silverLogo from '../assets/SponsorshipLogo/silver.png';
+
+
+import exhibitionLogo from '../assets/SponsorshipLogo/exhibition.png';
+import kitLogo from '../assets/SponsorshipLogo/kit.png';
+import supportedLogo from '../assets/SponsorshipLogo/logo.png';
+
+import { useState } from "react";
+import SponsorFormModal from "../components/SponsorFormModal";
 
 // ---------- DATA (pulled from the sponsorship brochure) ----------
 
@@ -144,6 +156,9 @@ const listItem = {
 };
 
 export default function Sponsorship() {
+
+  const [openModal, setOpenModal] = useState(false);
+const [selectedPackage, setSelectedPackage] = useState("");
   return (
     <>
       <Navbar />
@@ -251,6 +266,10 @@ export default function Sponsorship() {
 
     
     {/* PACKAGES */}
+
+
+
+
 <section className="bg-gray-50 py-24">
   <div className="max-w-7xl mx-auto px-6">
     <motion.div
@@ -283,12 +302,12 @@ export default function Sponsorship() {
         
         // Define logo URLs for each tier
         const tierLogos = {
-          'Platinum Sponsor': '',
-          'Gold Sponsor': 'https://your-domain.com/gold-logo.png',
-          'Silver Sponsor': 'https://your-domain.com/silver-logo.png',
+          'Platinum Sponsor': platinumLogo,
+          'Gold Sponsor': goldLogo,
+          'Silver Sponsor': silverLogo,
         };
         
-        const logoUrl = tierLogos[item.title] || 'https://your-domain.com/default-logo.png';
+        const logoUrl = tierLogos[item.title] || platinumLogo;
         
         return (
           <motion.div
@@ -304,11 +323,11 @@ export default function Sponsorship() {
               hover:border-yellow-400/50`}
           >
             <div
-              className={`relative bg-gradient-to-r ${item.color} p-8 text-center overflow-hidden`}
+              className={`relative bg-white p-0 text-center overflow-hidden h-72 flex items-center justify-center`}
             >
               <motion.div
-                initial={{ scale: 0, rotate: -25 }}
-                whileInView={{ scale: 1, rotate: 0 }}
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{
                   type: "spring",
@@ -316,26 +335,26 @@ export default function Sponsorship() {
                   damping: 12,
                   delay: index * 0.1,
                 }}
-                className="mx-auto mb-5 w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:rotate-6 transition-transform duration-500"
+                className="w-full h-full flex items-center justify-center"
               >
-                {/* Custom Logo Image */}
+                {/* Full Logo Image with white bg */}
                 <img 
                   src={logoUrl} 
                   alt={item.title}
-                  className="w-12 h-12 object-contain"
+                  className="w-full h-full object-contain p-8 bg-white"
                 />
               </motion.div>
-              <h3 className="text-3xl font-bold text-white">
-                {item.title}
-              </h3>
             </div>
 
             <div className="p-8">
-              <h4 className="text-yellow-600 text-3xl font-bold">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center">
+                {item.title}
+              </h3>
+              <h4 className="text-yellow-600 text-3xl font-bold text-center">
                 {item.price}
               </h4>
               {item.altPrice && (
-                <p className="text-gray-500 text-sm mt-1 mb-6">
+                <p className="text-gray-500 text-sm mt-1 mb-6 text-center">
                   {item.altPrice}
                 </p>
               )}
@@ -364,29 +383,15 @@ export default function Sponsorship() {
                 ))}
               </motion.div>
 
-              <button
-                className="
-                  mt-10
-                  w-full
-                  rounded-full
-                  py-4
-                  bg-yellow-500
-                  text-white
-                  font-bold
-                  flex
-                  justify-center
-                  items-center
-                  gap-2
-                  hover:bg-yellow-600
-                  hover:gap-3
-                  transition-all
-                  shadow-[0_4px_15px_rgba(212,175,55,0.3)]
-                  hover:shadow-[0_8px_25px_rgba(212,175,55,0.4)]
-                "
-              >
-                Book Now
-             
-              </button>
+<button
+  onClick={() => {
+    setSelectedPackage(item.title);
+    setOpenModal(true);
+  }}
+  className="mt-10 w-full rounded-full py-4 bg-yellow-500 text-white font-bold flex justify-center items-center gap-2 hover:bg-yellow-600 transition-all duration-300 shadow-lg"
+>
+  Book Now
+</button>
             </div>
           </motion.div>
         );
@@ -398,102 +403,129 @@ export default function Sponsorship() {
 
 
 
+
       
 
       {/* ================= OTHER SPONSORSHIP OPTIONS ================= */}
 
-      <section className="bg-[#0b0b0b] py-24">
-        <div className="max-w-7xl mx-auto px-6">
+
+
+<section className="bg-[#0b0b0b] py-24">
+  <div className="max-w-7xl mx-auto px-6">
+    <motion.div
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      variants={fadeUp}
+      className="text-center mb-16"
+    >
+      <span className="text-yellow-400 uppercase tracking-[4px] text-sm">
+        More Ways To Sponsor
+      </span>
+
+      <h2 className="text-2xl font-bold text-white mt-4">
+        More Sponsorship Options
+      </h2>
+    </motion.div>
+
+    <motion.div
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={stagger}
+      className="grid md:grid-cols-3 gap-8"
+    >
+      {otherPackages.map((item, index) => {
+        const Icon = item.icon;
+        
+        // Public folder se direct path
+   const optionLogos = {
+  "Kit Sponsor": kitLogo,
+  "Exhibition Stall": exhibitionLogo,
+  "Logo Sponsor": supportedLogo,
+};
+
+const logoUrl = optionLogos[item.title];
+
+        return (
           <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
+            key={index}
             variants={fadeUp}
-            className="text-center mb-16"
+            whileHover={{ y: -10, transition: { duration: 0.3 } }}
+            className="rounded-3xl border border-yellow-500/60 bg-[#121212] overflow-hidden hover:border-yellow-300 transition-colors duration-500"
           >
-            <span className="text-yellow-400 uppercase tracking-[4px] text-sm">
-              More Ways To Sponsor
-            </span>
+            <div className="bg-white p-0 text-center overflow-hidden h-56 flex items-center justify-center border-b border-yellow-500/30">
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  type: "spring",
+                  stiffness: 140,
+                  damping: 12,
+                  delay: index * 0.1,
+                }}
+                className="w-full h-full flex items-center justify-center bg-white"
+              >
+           <img
+    src={logoUrl}
+    alt={item.title}
+    className="w-full h-full object-contain p-8"
+/>
+              </motion.div>
+            </div>
 
-            <h2 className="text-2xl font-bold text-white mt-4">
-              More Sponsorship Options
-            </h2>
+            <div className="p-8">
+              <h3 className="text-2xl font-bold text-yellow-400 text-center mb-2">
+                {item.title}
+              </h3>
+              <h4 className="text-white text-2xl font-bold text-center">
+                {item.price}
+              </h4>
+
+              {item.altPrice && (
+                <p className="text-gray-500 text-sm mt-1 text-center">
+                  {item.altPrice}
+                </p>
+              )}
+
+              <p className="text-gray-400 mt-5 leading-7">{item.desc}</p>
+
+              <ul className="mt-6 space-y-3">
+                {item.features.map((f, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start gap-3 text-gray-300 text-sm leading-6"
+                  >
+                    <CheckCircle
+                      className="text-yellow-500 mt-0.5 shrink-0"
+                      size={16}
+                    />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+<button
+  onClick={() => {
+    setSelectedPackage(item.title);
+    setOpenModal(true);
+  }}
+  className="mt-10 w-full rounded-full py-4 bg-yellow-500 text-white font-bold flex justify-center items-center gap-2 hover:bg-yellow-600 transition-all duration-300 shadow-lg"
+>
+  Book Now
+</button>
+            </div>
           </motion.div>
+        );
+      })}
+    </motion.div>
+  </div>
+</section>
 
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={stagger}
-            className="grid md:grid-cols-3 gap-8"
-          >
-            {otherPackages.map((item, index) => {
-              const Icon = item.icon;
 
-              return (
-                <motion.div
-                  key={index}
-                  variants={fadeUp}
-                  whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                  className="rounded-3xl border border-yellow-500/60 bg-[#121212] overflow-hidden hover:border-yellow-300 transition-colors duration-500"
-                >
-                  <div className="bg-gradient-to-br from-[#1c1c1c] to-[#0a0a0a] p-8 text-center border-b border-yellow-500/30">
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 140,
-                        damping: 12,
-                        delay: index * 0.1,
-                      }}
-                      className="mx-auto mb-4 w-16 h-16 rounded-2xl bg-yellow-500/10 border border-yellow-500 flex items-center justify-center"
-                    ></motion.div>
 
-                    <h3 className="text-2xl font-bold text-yellow-400">
-                      {item.title}
-                    </h3>
-                  </div>
 
-                  <div className="p-8">
-                    <h4 className="text-white text-2xl font-bold">
-                      {item.price}
-                    </h4>
-
-                    {item.altPrice && (
-                      <p className="text-gray-500 text-sm mt-1">
-                        {item.altPrice}
-                      </p>
-                    )}
-
-                    <p className="text-gray-400 mt-5 leading-7">{item.desc}</p>
-
-                    <ul className="mt-6 space-y-3">
-                      {item.features.map((f, i) => (
-                        <li
-                          key={i}
-                          className="flex items-start gap-3 text-gray-300 text-sm leading-6"
-                        >
-                          <CheckCircle
-                            className="text-yellow-500 mt-0.5 shrink-0"
-                            size={16}
-                          />
-                          {f}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <button className="w-full mt-8 py-4 rounded-full bg-yellow-500 text-black font-bold flex justify-center items-center gap-2 hover:bg-yellow-400 hover:gap-3 transition-all">
-                      Book Now
-                    </button>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </div>
-      </section>
 
       {/* ================= DELEGATE REGISTRATION ================= */}
       <section className="py-16 bg-white">
@@ -567,6 +599,13 @@ export default function Sponsorship() {
           </motion.div>
         </div>
       </section>
+
+
+<SponsorFormModal
+open={openModal}
+onClose={()=>setOpenModal(false)}
+packageName={selectedPackage}
+/>
 
       <Footer />
     </>
