@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 
-import flir from "../../assets/exhibitionImage/flir.png";
-import motwane from "../../assets/exhibitionImage/motwane.png";
-import emr from "../../assets/exhibitionImage/emr.png";
-import interTech from "../../assets/exhibitionImage/inter-tech.png";
-import nuCork from "../../assets/exhibitionImage/nucork.png";
+import flir from "../../assets/ExhibitionImage/flir.png";
+import motwane from "../../assets/ExhibitionImage/motwane.png";
+import emr from "../../assets/ExhibitionImage/emr.png";
+import interTech from "../../assets/ExhibitionImage/inter-tech.png";
+import nuCork from "../../assets/ExhibitionImage/nucork.png";
 
 const exhibitors = [
   {
