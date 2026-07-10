@@ -236,7 +236,7 @@ export default function Home() {
                       fontWeight: 600,
                     }}
                   >
-                    5000+
+                    50+
                   </b>
                   Participants
                 </span>

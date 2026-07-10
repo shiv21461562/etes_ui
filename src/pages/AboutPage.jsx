@@ -4,13 +4,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-import {
-  Award,
-  BadgeCheck,
-  Users,
-  BarChart3,
-
-} from "lucide-react";
+import { Award, BadgeCheck, Users, BarChart3 } from "lucide-react";
 
 // Import images
 import about1 from "../assets/about3.avif";
@@ -22,13 +16,10 @@ import DrDiegoRobalino from "../assets/speakers/DrDiegoRobalino.avif";
 import DrVSKVHarish from "../assets/speakers/DrVSKVHarish.avif";
 import ShashankGupta from "../assets/speakers/ShashankGupta.avif";
 
-
 import brand from "../assets/WhyParticipate/brand.png";
 import networking from "../assets/WhyParticipate/networking.png";
 import market from "../assets/WhyParticipate/market.png";
 import award from "../assets/WhyParticipate/award.png";
-
-
 
 // Featured speakers data (only 4)
 const featuredSpeakers = [
@@ -119,7 +110,7 @@ export default function AboutPage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
-        className="pt-32 pb-24 min-h-screen border-b border-[#e8b84b]/20 overflow-hidden"
+        className="pt-32 pb-24 min-h-screen border-b border-[#e8b84b]/20 overflow-visible"
       >
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
           {/* Left */}
@@ -167,7 +158,7 @@ export default function AboutPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-2 gap-5"
+            className="grid grid-cols-2 gap-6"
           >
             <motion.img
               variants={fadeInRight}
@@ -175,7 +166,7 @@ export default function AboutPage() {
               transition={{ duration: 0.3 }}
               src={about1}
               alt="ETES event"
-              className="rounded-3xl h-[260px] w-full object-cover border border-[#e8b84b]/20"
+              className="rounded-4xl w-[320px] h-[380px] object-cover border-2 border-[#e8b84b] shadow-[0_0_35px_rgba(232,184,75,0.4)] mx-auto"
             />
 
             <motion.img
@@ -184,7 +175,7 @@ export default function AboutPage() {
               transition={{ duration: 0.3 }}
               src={about2}
               alt="ETES event"
-              className="rounded-3xl h-[260px] w-full object-cover mt-14 border border-[#e8b84b]/20"
+              className="rounded-3xl w-[340px] h-[420px] object-cover mt-34 border-2 border-[#e8b84b] shadow-[0_0_35px_rgba(232,184,75,0.4)] mx-auto"
             />
           </motion.div>
         </div>
@@ -270,209 +261,202 @@ export default function AboutPage() {
               className="mt-12 inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-yellow-500 text-white px-8 py-3 rounded-full font-semibold uppercase tracking-wider text-sm hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-[0_4px_15px_rgba(212,175,55,0.3)] hover:shadow-[0_8px_25px_rgba(212,175,55,0.4)] hover:gap-3"
             >
               View All Speakers
-            
             </Link>
           </motion.div>
         </div>
       </motion.section>
 
-
-
-{/* Why Participate */}
-<motion.section
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.2 }}
-  className="relative py-24 bg-[#0a1020] overflow-hidden"
->
-  {/* Background Glow */}
-  <div className="absolute top-0 left-0 w-72 h-72 bg-yellow-500/10 blur-[120px] rounded-full"></div>
-  <div className="absolute bottom-0 right-0 w-72 h-72 bg-yellow-500/10 blur-[120px] rounded-full"></div>
-
-  <div className="relative max-w-7xl mx-auto px-6">
-    {/* Heading */}
-    <motion.div
-      variants={fadeInUp}
-      className="text-center max-w-3xl mx-auto"
-    >
-      <span className="inline-block px-4 py-2 rounded-full bg-[#e8b84b]/10 border border-[#e8b84b]/20 text-[#f3d488] text-sm uppercase tracking-[3px] font-semibold">
-        Why Participate
-      </span>
-
-      <h2 className="mt-6 font-['Playfair_Display',serif] text-4xl md:text-5xl font-bold text-white leading-tight">
-        Unlock Opportunities at
-        <span className="text-[#e8b84b]"> ETES 2026</span>
-      </h2>
-
-      <p className="mt-6 text-lg text-gray-300 leading-8">
-        Join India's premier Electrical & Power Engineering Exhibition &
-        Conference to connect with industry leaders, discover innovations,
-        strengthen your brand, and explore new business opportunities.
-      </p>
-    </motion.div>
-
-    {/* Cards */}
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
-      {/* Card 1 */}
-      <motion.div
-        variants={fadeInUp}
-        whileHover={{ 
-          y: -8,
-          borderColor: "#e8b84b"
-        }}
-        className="group relative bg-white/5 border border-[#e8b84b]/20 rounded-3xl p-6 backdrop-blur-md transition-all duration-300 flex flex-col items-center text-center overflow-hidden"
+      {/* Why Participate */}
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        className="relative py-24 bg-[#0a1020] overflow-hidden"
       >
-        {/* Animated Background Gradient - Left to Right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#e8b84b]/0 via-[#e8b84b]/20 to-[#e8b84b]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out"></div>
-        
-        <div className="relative z-10 flex flex-col items-center">
-          <div className="flex justify-center items-center w-full h-56">
-            <img
-              src={brand}
-              alt="Brand Value"
-              className="w-66 h-66 object-contain group-hover:scale-110 transition-all duration-500"
-            />
+        {/* Background Glow */}
+        <div className="absolute top-0 left-0 w-72 h-72 bg-yellow-500/10 blur-[120px] rounded-full"></div>
+        <div className="absolute bottom-0 right-0 w-72 h-72 bg-yellow-500/10 blur-[120px] rounded-full"></div>
+
+        <div className="relative max-w-7xl mx-auto px-6">
+          {/* Heading */}
+          <motion.div
+            variants={fadeInUp}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <span className="inline-block px-4 py-2 rounded-full bg-[#e8b84b]/10 border border-[#e8b84b]/20 text-[#f3d488] text-sm uppercase tracking-[3px] font-semibold">
+              Why Participate
+            </span>
+
+            <h2 className="mt-6 font-['Playfair_Display',serif] text-4xl md:text-5xl font-bold text-white leading-tight">
+              Unlock Opportunities at
+              <span className="text-[#e8b84b]"> ETES 2026</span>
+            </h2>
+
+            <p className="mt-6 text-lg text-gray-300 leading-8">
+              Join India's premier Electrical & Power Engineering Exhibition &
+              Conference to connect with industry leaders, discover innovations,
+              strengthen your brand, and explore new business opportunities.
+            </p>
+          </motion.div>
+
+          {/* Cards */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+            {/* Card 1 */}
+            <motion.div
+              variants={fadeInUp}
+              whileHover={{
+                y: -8,
+                borderColor: "#e8b84b",
+              }}
+              className="group relative bg-white/5 border border-[#e8b84b]/20 rounded-3xl p-6 backdrop-blur-md transition-all duration-300 flex flex-col items-center text-center overflow-hidden"
+            >
+              {/* Animated Background Gradient - Left to Right */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#e8b84b]/0 via-[#e8b84b]/20 to-[#e8b84b]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out"></div>
+
+              <div className="relative z-10 flex flex-col items-center">
+                <div className="flex justify-center items-center w-full h-56">
+                  <img
+                    src={brand}
+                    alt="Brand Value"
+                    className="w-66 h-66 object-contain group-hover:scale-110 transition-all duration-500"
+                  />
+                </div>
+
+                <h3 className="mt-4 text-xl font-bold text-white">
+                  Brand Value
+                </h3>
+
+                <p className="mt-3 text-gray-300 leading-6 text-sm">
+                  Enhance your organization's visibility and strengthen your
+                  reputation within the Electrical & Power industry.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Card 2 */}
+            <motion.div
+              variants={fadeInUp}
+              whileHover={{
+                y: -8,
+                borderColor: "#e8b84b",
+              }}
+              className="group relative bg-white/5 border border-[#e8b84b]/20 rounded-3xl p-6 backdrop-blur-md transition-all duration-300 flex flex-col items-center text-center overflow-hidden"
+            >
+              {/* Animated Background Gradient - Left to Right */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#e8b84b]/0 via-[#e8b84b]/20 to-[#e8b84b]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out"></div>
+
+              <div className="relative z-10 flex flex-col items-center">
+                <div className="flex justify-center items-center w-full h-56">
+                  <img
+                    src={networking}
+                    alt="Networking"
+                    className="w-66 h-66 object-contain group-hover:scale-110 transition-all duration-500"
+                  />
+                </div>
+
+                <h3 className="mt-4 text-xl font-bold text-white">
+                  Networking
+                </h3>
+
+                <p className="mt-3 text-gray-300 leading-6 text-sm">
+                  Connect with industry decision-makers, manufacturers,
+                  consultants, utilities and key stakeholders from across India.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Card 3 */}
+            <motion.div
+              variants={fadeInUp}
+              whileHover={{
+                y: -8,
+                borderColor: "#e8b84b",
+              }}
+              className="group relative bg-white/5 border border-[#e8b84b]/20 rounded-3xl p-6 backdrop-blur-md transition-all duration-300 flex flex-col items-center text-center overflow-hidden"
+            >
+              {/* Animated Background Gradient - Left to Right */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#e8b84b]/0 via-[#e8b84b]/20 to-[#e8b84b]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out"></div>
+
+              <div className="relative z-10 flex flex-col items-center">
+                <div className="flex justify-center items-center w-full h-56">
+                  <img
+                    src={market}
+                    alt="Market Research"
+                    className="w-66 h-66 object-contain group-hover:scale-110 transition-all duration-500"
+                  />
+                </div>
+
+                <h3 className="mt-4 text-xl font-bold text-white">
+                  Market Research
+                </h3>
+
+                <p className="mt-3 text-gray-300 leading-6 text-sm">
+                  Gain valuable insights into emerging market trends, industry
+                  challenges and future business opportunities.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Card 4 */}
+            <motion.div
+              variants={fadeInUp}
+              whileHover={{
+                y: -8,
+                borderColor: "#e8b84b",
+              }}
+              className="group relative bg-white/5 border border-[#e8b84b]/20 rounded-3xl p-6 backdrop-blur-md transition-all duration-300 flex flex-col items-center text-center overflow-hidden"
+            >
+              {/* Animated Background Gradient - Left to Right */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#e8b84b]/0 via-[#e8b84b]/20 to-[#e8b84b]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out"></div>
+
+              <div className="relative z-10 flex flex-col items-center">
+                <div className="flex justify-center items-center w-full h-56">
+                  <img
+                    src={award}
+                    alt="Award Ceremony"
+                    className="w-66 h-66 object-contain group-hover:scale-110 transition-all duration-500"
+                  />
+                </div>
+
+                <h3 className="mt-4 text-xl font-bold text-white">
+                  Award Ceremony
+                </h3>
+
+                <p className="mt-3 text-gray-300 leading-6 text-sm">
+                  Celebrate excellence by recognizing entrepreneurs, product
+                  developers, manufacturers and utilities across the Electrical
+                  & Power industry and allied sectors.
+                </p>
+              </div>
+            </motion.div>
           </div>
 
-          <h3 className="mt-4 text-xl font-bold text-white">
-            Brand Value
-          </h3>
+          {/* Bottom CTA */}
+          <motion.div
+            variants={fadeInUp}
+            className="mt-20 rounded-3xl border border-[#e8b84b]/20 bg-gradient-to-r from-[#10182e] via-[#111827] to-[#10182e] p-10 text-center"
+          >
+            <h3 className="text-3xl font-bold text-white">
+              Be a Part of India's Leading Electrical & Power Event
+            </h3>
 
-          <p className="mt-3 text-gray-300 leading-6 text-sm">
-            Enhance your organization's visibility and strengthen your
-            reputation within the Electrical & Power industry.
-          </p>
+            <p className="mt-4 text-gray-300 max-w-3xl mx-auto leading-8">
+              ETES 2026 offers an unmatched platform to showcase innovations,
+              build strategic partnerships, generate business leads and
+              celebrate excellence in the Electrical & Power ecosystem.
+            </p>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => navigate("/register")}
+              className="mt-8 inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#c9962f] to-[#e8b84b] px-8 py-4 text-[#0a1020] font-bold transition-all duration-300 shadow-lg hover:shadow-[#e8b84b]/30"
+            >
+              Register Now
+            </motion.button>
+          </motion.div>
         </div>
-      </motion.div>
-
-      {/* Card 2 */}
-      <motion.div
-        variants={fadeInUp}
-        whileHover={{ 
-          y: -8,
-          borderColor: "#e8b84b"
-        }}
-        className="group relative bg-white/5 border border-[#e8b84b]/20 rounded-3xl p-6 backdrop-blur-md transition-all duration-300 flex flex-col items-center text-center overflow-hidden"
-      >
-        {/* Animated Background Gradient - Left to Right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#e8b84b]/0 via-[#e8b84b]/20 to-[#e8b84b]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out"></div>
-        
-        <div className="relative z-10 flex flex-col items-center">
-          <div className="flex justify-center items-center w-full h-56">
-            <img
-              src={networking}
-              alt="Networking"
-              className="w-66 h-66 object-contain group-hover:scale-110 transition-all duration-500"
-            />
-          </div>
-
-          <h3 className="mt-4 text-xl font-bold text-white">
-            Networking
-          </h3>
-
-          <p className="mt-3 text-gray-300 leading-6 text-sm">
-            Connect with industry decision-makers, manufacturers,
-            consultants, utilities and key stakeholders from across India.
-          </p>
-        </div>
-      </motion.div>
-
-      {/* Card 3 */}
-      <motion.div
-        variants={fadeInUp}
-        whileHover={{ 
-          y: -8,
-          borderColor: "#e8b84b"
-        }}
-        className="group relative bg-white/5 border border-[#e8b84b]/20 rounded-3xl p-6 backdrop-blur-md transition-all duration-300 flex flex-col items-center text-center overflow-hidden"
-      >
-        {/* Animated Background Gradient - Left to Right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#e8b84b]/0 via-[#e8b84b]/20 to-[#e8b84b]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out"></div>
-        
-        <div className="relative z-10 flex flex-col items-center">
-          <div className="flex justify-center items-center w-full h-56">
-            <img
-              src={market}
-              alt="Market Research"
-              className="w-66 h-66 object-contain group-hover:scale-110 transition-all duration-500"
-            />
-          </div>
-
-          <h3 className="mt-4 text-xl font-bold text-white">
-            Market Research
-          </h3>
-
-          <p className="mt-3 text-gray-300 leading-6 text-sm">
-            Gain valuable insights into emerging market trends, industry
-            challenges and future business opportunities.
-          </p>
-        </div>
-      </motion.div>
-
-      {/* Card 4 */}
-      <motion.div
-        variants={fadeInUp}
-        whileHover={{ 
-          y: -8,
-          borderColor: "#e8b84b"
-        }}
-        className="group relative bg-white/5 border border-[#e8b84b]/20 rounded-3xl p-6 backdrop-blur-md transition-all duration-300 flex flex-col items-center text-center overflow-hidden"
-      >
-        {/* Animated Background Gradient - Left to Right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#e8b84b]/0 via-[#e8b84b]/20 to-[#e8b84b]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out"></div>
-        
-        <div className="relative z-10 flex flex-col items-center">
-          <div className="flex justify-center items-center w-full h-56">
-            <img
-              src={award}
-              alt="Award Ceremony"
-              className="w-66 h-66 object-contain group-hover:scale-110 transition-all duration-500"
-            />
-          </div>
-
-          <h3 className="mt-4 text-xl font-bold text-white">
-            Award Ceremony
-          </h3>
-
-          <p className="mt-3 text-gray-300 leading-6 text-sm">
-            Celebrate excellence by recognizing entrepreneurs, product
-            developers, manufacturers and utilities across the Electrical &
-            Power industry and allied sectors.
-          </p>
-        </div>
-      </motion.div>
-    </div>
-
-    {/* Bottom CTA */}
-    <motion.div
-      variants={fadeInUp}
-      className="mt-20 rounded-3xl border border-[#e8b84b]/20 bg-gradient-to-r from-[#10182e] via-[#111827] to-[#10182e] p-10 text-center"
-    >
-      <h3 className="text-3xl font-bold text-white">
-        Be a Part of India's Leading Electrical & Power Event
-      </h3>
-
-      <p className="mt-4 text-gray-300 max-w-3xl mx-auto leading-8">
-        ETES 2026 offers an unmatched platform to showcase innovations,
-        build strategic partnerships, generate business leads and celebrate
-        excellence in the Electrical & Power ecosystem.
-      </p>
-
- <motion.button
-  whileHover={{ scale: 1.05 }}
-  whileTap={{ scale: 0.95 }}
-  onClick={() => navigate("/register")}
-  className="mt-8 inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#c9962f] to-[#e8b84b] px-8 py-4 text-[#0a1020] font-bold transition-all duration-300 shadow-lg hover:shadow-[#e8b84b]/30"
->
-  Register Now
- 
-</motion.button>
-    </motion.div>
-  </div>
-</motion.section>
-
-
-
+      </motion.section>
 
       {/* Location */}
       <motion.section
@@ -524,11 +508,11 @@ export default function AboutPage() {
                   Venue
                 </h4>
                 <p className="mt-2 text-gray-700">
-                  India Expo Centre &amp; Mart
+                  Scope Complex
                   <br />
-                  Greater Noida
+                  New Delhi
                   <br />
-                  Uttar Pradesh
+                  NCR
                 </p>
               </div>
             </motion.div>
@@ -547,7 +531,7 @@ export default function AboutPage() {
                 <h4 className="text-yellow-600 font-semibold uppercase tracking-wider text-xs">
                   Date
                 </h4>
-                <p className="mt-2 text-gray-700">18–20 August 2026</p>
+                <p className="mt-2 text-gray-700">23rd SEP 2026</p>
               </div>
             </motion.div>
           </motion.div>

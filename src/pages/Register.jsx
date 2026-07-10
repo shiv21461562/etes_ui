@@ -92,9 +92,9 @@ export default function ETES2026() {
       small: "Centre",
       label: "New Delhi",
     },
-    { icon: Users, big: "5000+", small: "", label: "Participants" },
-    { icon: Mic, big: "80+", small: "", label: "Speakers" },
-    { icon: Globe, big: "25+", small: "", label: "Countries" },
+    { icon: Users, big: "50+", small: "", label: "Participants" },
+    { icon: Mic, big: "20+", small: "", label: "Speakers" },
+    { icon: Globe, big: "4+", small: "", label: "Countries" },
   ];
 
   return (

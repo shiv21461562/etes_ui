@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import heroImage from "../assets/hero-speaker.jpg";
+import { useNavigate } from "react-router-dom";
 
 // Import all speaker images with clean filenames
 import AtherSalim from "../assets/speakers/AtherSalim.avif";
@@ -28,8 +29,8 @@ import SushilVarshney from "../assets/speakers/SushilVarshney.avif";
 import YogeshSood from "../assets/speakers/YogeshSood.avif";
 
 const stats = [
-  { icon: Users, value: "50+", label: "Industry Speakers" },
-  { icon: Globe, value: "15+", label: "Countries" },
+  { icon: Users, value: "20+", label: "Industry Speakers" },
+  { icon: Globe, value: "4+", label: "Countries" },
   { icon: Calendar, value: "25+", label: "Technical Sessions" },
   { icon: Users, value: "5000+", label: "Delegates" },
 ];
@@ -167,21 +168,32 @@ const scaleUp = {
 };
 
 export default function SpeakersPage() {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-white font-sans">
-      {/* Hero (dark) */}
+      {/* Hero */}
       <motion.section
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         className="relative overflow-hidden bg-[#0a0e1a] min-h-[720px] lg:min-h-[730px]"
       >
+        {/* Background Image */}
         <div className="absolute inset-0">
           <img
             src={heroImage}
             alt="Hero Background"
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover"
           />
+
+          {/* Light Overlay */}
+          <div className="absolute inset-0 bg-black/35"></div>
+
+          {/* Golden Glow */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0e1a]/45 via-[#0a0e1a]/20 to-transparent"></div>
+
+          {/* Extra Glow */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,#d4af3720,transparent_60%)]"></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-6 min-h-[720px] lg:min-h-[800px] flex flex-col justify-center">
@@ -196,6 +208,7 @@ export default function SpeakersPage() {
               className="flex items-center gap-3 mb-4"
             >
               <span className="h-px w-10 bg-amber-500" />
+
               <span className="text-amber-400 text-xs md:text-sm font-semibold tracking-[0.2em] uppercase">
                 Meet Our Industry Leaders
               </span>
@@ -213,10 +226,11 @@ export default function SpeakersPage() {
 
             <motion.p
               variants={fadeInUp}
-              className="text-gray-300 text-base md:text-lg max-w-xl mb-14"
+              className="text-gray-200 text-lg md:text-xl leading-8 max-w-2xl"
             >
-              Learn from India's top Electrical, Energy &amp; Utility experts
-              sharing knowledge, insights and innovations.
+              Learn from India's leading Electrical, Energy & Utility experts
+              sharing innovative ideas, real-world experience and future-ready
+              technologies shaping tomorrow's power sector.
             </motion.p>
           </motion.div>
         </div>
@@ -325,7 +339,7 @@ export default function SpeakersPage() {
                     className="w-full h-full object-cover rounded-full"
                   />
                 </div>
-              <h3 className="text-white font-bold text-base mb-1">  
+                <h3 className="text-white font-bold text-base mb-1">
                   {speaker.name}
                 </h3>
                 <p className="text-amber-400 text-sm leading-snug">
@@ -364,10 +378,10 @@ export default function SpeakersPage() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => navigate("/contact")}
             className="flex items-center gap-2 bg-gradient-to-b from-amber-400 to-amber-500 text-[#0a0e1a] font-semibold px-6 py-3 rounded-lg hover:from-amber-300 hover:to-amber-400 transition-colors whitespace-nowrap"
           >
             Join as Speaker
-            <ArrowRight size={18} />
           </motion.button>
         </motion.div>
       </motion.section>

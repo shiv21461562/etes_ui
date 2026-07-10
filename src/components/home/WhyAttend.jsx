@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Zap, Users, Mic2, Building2, Globe2, TrendingUp } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const features = [
   {
@@ -60,6 +61,7 @@ const item = {
 
 export default function WhyAttend() {
   const [activeCard, setActiveCard] = useState(null);
+  const navigate = useNavigate();
   return (
     <section className="relative overflow-hidden bg-[#050914] py-24">
       {/* Background Glow */}
@@ -153,32 +155,33 @@ export default function WhyAttend() {
           viewport={{ once: true }}
           className="mt-16 flex justify-center"
         >
-          <button
-            className="group relative overflow-hidden rounded-xl bg-gradient-to-r
-            from-[#C9A227]
-            via-[#F8E7A1]
-            to-[#C9A227]
-            px-10
-            py-4
-            font-bold
-            tracking-wider
-            text-black
-            shadow-[0_20px_50px_rgba(212,175,55,.25)]
-            transition-all
-            duration-500
-            hover:-translate-y-1
-            hover:scale-105
-            hover:shadow-[0_25px_70px_rgba(212,175,55,.45)]"
-          >
-            {/* Shine */}
-            <span className="absolute inset-0 overflow-hidden rounded-xl">
-              <span className="absolute -left-24 top-0 h-full w-16 rotate-12 bg-white/60 blur-md transition-all duration-1000 group-hover:left-[120%]" />
-            </span>
+      <button
+  onClick={() => navigate("/register")}
+  className="group relative overflow-hidden rounded-xl bg-gradient-to-r
+  from-[#C9A227]
+  via-[#F8E7A1]
+  to-[#C9A227]
+  px-10
+  py-4
+  font-bold
+  tracking-wider
+  text-black
+  shadow-[0_20px_50px_rgba(212,175,55,.25)]
+  transition-all
+  duration-500
+  hover:-translate-y-1
+  hover:scale-105
+  hover:shadow-[0_25px_70px_rgba(212,175,55,.45)]"
+>
+  {/* Shine */}
+  <span className="absolute inset-0 overflow-hidden rounded-xl">
+    <span className="absolute -left-24 top-0 h-full w-16 rotate-12 bg-white/60 blur-md transition-all duration-1000 group-hover:left-[120%]" />
+  </span>
 
-            <span className="relative flex items-center gap-3">
-              Become A Visitor
-            </span>
-          </button>
+  <span className="relative flex items-center gap-3">
+    Become A Visitor
+  </span>
+</button>
         </motion.div>
       </div>
     </section>

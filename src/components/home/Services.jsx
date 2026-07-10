@@ -88,9 +88,9 @@ export default function Services() {
           </span>
 
           <h2 className="text-5xl md:text-6xl font-bold leading-tight">
-            <span className="text-black">Our </span>
+            <span className="text-black">Conference  </span>
             <span className="text-transparent bg-clip-text font-extrabold bg-gradient-to-b from-[#FFF1A6] via-[#E7C65C] to-[#B67A12]">
-              Services
+              Highlights
             </span>
           </h2>
 

@@ -1,5 +1,3 @@
-
-
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -15,7 +13,11 @@ import Register from "./pages/Register";
 import Speakers from "./pages/Speakers";
 import AboutDetails from "./pages/AboutDetails";
 import Sponsorship from "./pages/Sponsorship";
-
+import PrivacyPolicy from "./pages/footer/PrivacyPolicy";
+import TermsConditions from "./pages/footer/TermsConditions";
+import RefundPolicy from "./pages/footer/RefundPolicy";
+import FAQ from "./pages/footer/FAQ";
+import ScrollToTop from "./components/ScrollToTop";
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -33,8 +35,9 @@ function App() {
 
   return (
     <>
+      {" "}
+      <ScrollToTop />
       <Navbar />
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutPage />} />
@@ -45,8 +48,16 @@ function App() {
         <Route path="/about-details" element={<AboutDetails />} />
         <Route path="/sponsorship" element={<Sponsorship />} />
 
-      </Routes>
+        {/* footer */}
 
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+
+        <Route path="/terms-conditions" element={<TermsConditions />} />
+
+        <Route path="/refund-policy" element={<RefundPolicy />} />
+
+        <Route path="/faq" element={<FAQ />} />
+      </Routes>
       <Footer />
     </>
   );

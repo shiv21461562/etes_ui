@@ -9,6 +9,8 @@ import Services from "../components/home/Services";
 import MediaPartners from "../components/home/MediaPartners";
 import WhyAttend from "../components/home/WhyAttend";
 import SponsorsSection from "../components/home/SponsorsSection";
+import ThinkInkLink from "../components/home/ThinkInkLink";
+import ThemeSection from "../components/home/ThemeSection";
 export default function Home() {
   return (
     <>
@@ -17,6 +19,8 @@ export default function Home() {
        <WhyAttend />
          
       <About />
+      <ThinkInkLink/>
+      <ThemeSection/>
         
        <EventStats />
       <MediaPartners/>

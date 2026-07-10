@@ -230,49 +230,54 @@ export default function Footer() {
           </div>
 
           {/* Column 3 - Legal */}
-          <div>
-            <h3 className="font-['Playfair_Display',serif] text-xl font-semibold text-[#f3d488] mb-5">
-              Legal
-            </h3>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  to="/privacy-policy"
-                  className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center gap-2 group"
-                >
-                  <span className="w-0 group-hover:w-4 h-px bg-[#e8b84b] transition-all duration-300"></span>
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/terms"
-                  className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center gap-2 group"
-                >
-                  <span className="w-0 group-hover:w-4 h-px bg-[#e8b84b] transition-all duration-300"></span>
-                  Terms & Conditions
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/refund-policy"
-                  className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center gap-2 group"
-                >
-                  <span className="w-0 group-hover:w-4 h-px bg-[#e8b84b] transition-all duration-300"></span>
-                  Refund Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/faq"
-                  className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center gap-2 group"
-                >
-                  <span className="w-0 group-hover:w-4 h-px bg-[#e8b84b] transition-all duration-300"></span>
-                  FAQ
-                </Link>
-              </li>
-            </ul>
-          </div>
+       {/* Column 3 - Legal */}
+<div>
+  <h3 className="font-['Playfair_Display',serif] text-xl font-semibold text-[#f3d488] mb-5">
+    Legal
+  </h3>
+
+  <ul className="space-y-3">
+    <li>
+      <Link
+        to="/privacy-policy"
+        className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center gap-2 group"
+      >
+        <span className="w-0 group-hover:w-4 h-px bg-[#e8b84b] transition-all duration-300"></span>
+        Privacy Policy
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        to="/terms-conditions"
+        className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center gap-2 group"
+      >
+        <span className="w-0 group-hover:w-4 h-px bg-[#e8b84b] transition-all duration-300"></span>
+        Terms & Conditions
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        to="/refund-policy"
+        className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center gap-2 group"
+      >
+        <span className="w-0 group-hover:w-4 h-px bg-[#e8b84b] transition-all duration-300"></span>
+        Refund Policy
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        to="/faq"
+        className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center gap-2 group"
+      >
+        <span className="w-0 group-hover:w-4 h-px bg-[#e8b84b] transition-all duration-300"></span>
+        FAQ
+      </Link>
+    </li>
+  </ul>
+</div>
 
           {/* Column 4 - Newsletter */}
           <div>

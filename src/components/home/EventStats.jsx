@@ -17,6 +17,7 @@ import {
   Star,
   Zap,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function EventStats() {
   const [counts, setCounts] = useState({
@@ -245,18 +246,14 @@ export default function EventStats() {
 
         {/* CTA */}
         <div className="mt-16 text-center">
-          <button className="group px-8 py-4 rounded-xl bg-[#F3C548] text-[#050914] font-semibold flex items-center gap-3 hover:scale-105 duration-300 mx-auto">
-            Join ETES 2026
-            <svg
-              className="w-5 h-5 group-hover:translate-x-1 transition"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </button>
+       <Link
+  to="/contact"
+  className="group px-8 py-4 rounded-xl bg-[#F3C548] text-[#050914] font-semibold flex items-center gap-3 hover:scale-105 duration-300 mx-auto w-fit"
+>
+  Join ETES 2026
+
+
+</Link>
         </div>
       </div>
     </section>
