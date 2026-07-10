@@ -17,9 +17,9 @@ import img12 from "../assets/gallery/image12.jpeg";
 
 // Combine all images into one array
 const galleryImages = [
-  img1,
-  img2,
   img3,
+  img1,
+  img2, 
   img4,
   img5,
   img6,
