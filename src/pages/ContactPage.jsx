@@ -1,6 +1,46 @@
 import { Phone, Mail, MapPin, Clock, Send, HelpCircle } from "lucide-react";
 import { MessageCircle } from "lucide-react";
+import { useState } from "react";
+import { sendContact } from "../services/contactApi";
+import toast from "react-hot-toast";
+
 export default function Contactpage() {
+
+
+  const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  message: "",
+});
+
+const handleChange = (e) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value,
+  });
+};
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const res = await sendContact(formData);
+ toast.success("Your message has been sent successfully. We'll get back to you soon!");
+
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+    });
+  } catch (err) {
+    alert(err.response?.data?.message || "Something went wrong");
+  }
+};
+
+
+
+
+
   return (
     <main className="pt-28 min-h-screen bg-[#050914] text-white font-['Jost',sans-serif]">
       <style>{`
@@ -103,50 +143,62 @@ export default function Contactpage() {
               Send us a Message
             </h2>
 
-            <form className="space-y-6">
-              <div>
-                <label className="block mb-2 text-sm text-gray-300">
-                  Enter your first name
-                </label>
+          <form className="space-y-6" onSubmit={handleSubmit}>
+  <div>
+    <label className="block mb-2 text-sm text-gray-300">
+      Enter your first name
+    </label>
 
-                <input
-                  type="text"
-                  placeholder="Your first name goes here"
-                  className="w-full rounded-xl bg-[#0a1020] border border-[#e8b84b]/15 px-5 py-4 outline-none focus:border-[#e8b84b] transition placeholder:text-gray-600"
-                />
-              </div>
+    <input
+      type="text"
+      name="name"
+      value={formData.name}
+      onChange={handleChange}
+      placeholder="Your first name goes here"
+      className="w-full rounded-xl bg-[#0a1020] border border-[#e8b84b]/15 px-5 py-4 outline-none focus:border-[#e8b84b] transition placeholder:text-gray-600"
+      required
+    />
+  </div>
 
-              <div>
-                <label className="block mb-2 text-sm text-gray-300">
-                  Provide your email address
-                </label>
+  <div>
+    <label className="block mb-2 text-sm text-gray-300">
+      Provide your email address
+    </label>
 
-                <input
-                  type="email"
-                  placeholder="Your email address here"
-                  className="w-full rounded-xl bg-[#0a1020] border border-[#e8b84b]/15 px-5 py-4 outline-none focus:border-[#e8b84b] transition placeholder:text-gray-600"
-                />
-              </div>
+    <input
+      type="email"
+      name="email"
+      value={formData.email}
+      onChange={handleChange}
+      placeholder="Your email address here"
+      className="w-full rounded-xl bg-[#0a1020] border border-[#e8b84b]/15 px-5 py-4 outline-none focus:border-[#e8b84b] transition placeholder:text-gray-600"
+      required
+    />
+  </div>
 
-              <div>
-                <label className="block mb-2 text-sm text-gray-300">
-                  Your Message
-                </label>
+  <div>
+    <label className="block mb-2 text-sm text-gray-300">
+      Your Message
+    </label>
 
-                <textarea
-                  rows={6}
-                  placeholder="Write your message here..."
-                  className="w-full rounded-xl bg-[#0a1020] border border-[#e8b84b]/15 px-5 py-4 outline-none focus:border-[#e8b84b] transition resize-none placeholder:text-gray-600"
-                ></textarea>
-              </div>
+    <textarea
+      rows={6}
+      name="message"
+      value={formData.message}
+      onChange={handleChange}
+      placeholder="Write your message here..."
+      className="w-full rounded-xl bg-[#0a1020] border border-[#e8b84b]/15 px-5 py-4 outline-none focus:border-[#e8b84b] transition resize-none placeholder:text-gray-600"
+      required
+    />
+  </div>
 
-              <button
-                type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 py-4 rounded-xl bg-gradient-to-r from-[#c9962f] to-[#e8b84b] text-[#1a1305] font-bold uppercase tracking-wider text-sm hover:brightness-110 transition"
-              >
-                Submit Your Request <Send size={16} />
-              </button>
-            </form>
+  <button
+    type="submit"
+    className="w-full inline-flex items-center justify-center gap-2 py-4 rounded-xl bg-gradient-to-r from-[#c9962f] to-[#e8b84b] text-[#1a1305] font-bold uppercase tracking-wider text-sm hover:brightness-110 transition"
+  >
+    Submit Your Request <Send size={16} />
+  </button>
+</form>
           </div>
         </section>
 

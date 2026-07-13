@@ -20,6 +20,8 @@ import {
 
 import registrationImage from "../assets/REG.png";
 
+import { registerUser } from "../services/registrationApi";
+import toast from "react-hot-toast";
 // Animation variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -68,16 +70,52 @@ export default function ETES2026() {
   });
   const [remember, setRemember] = useState(true);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-  };
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    setLoading(true);
+
+    const payload = {
+      full_name: form.name,
+      email: form.email,
+      phone: form.phone,
+      message: form.message,
+    };
+
+    const res = await registerUser(payload);
+
+    if (res.data.success) {
+      toast.success("Registration submitted successfully!");
+
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 3000);
+    }
+  } catch (error) {
+    console.error(error);
+
+    alert(
+      error.response?.data?.message ||
+      "Something went wrong."
+    );
+  } finally {
+    setLoading(false);
+  }
+};
 
   const stats = [
     {
@@ -444,9 +482,12 @@ export default function ETES2026() {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           type="submit"
+          disabled={loading}
           className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-white font-bold text-sm tracking-widest py-4 rounded-xl transition-all duration-300 shadow-lg shadow-amber-400/30 hover:shadow-amber-400/50 mt-4"
         >
-          {submitted ? (
+          {loading ? (
+  <>Submitting...</>
+) : submitted ? (
             <>
               <CheckCircle2 size={18} />
               SUBMITTED!

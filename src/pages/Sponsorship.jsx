@@ -388,10 +388,13 @@ export default function Sponsorship() {
                     </motion.div>
 
                     <button
-                      onClick={() => {
-                        setSelectedPackage(item.title);
-                        setOpenModal(true);
-                      }}
+                      onClick={() =>
+                        navigate(
+                          `/sponsorship/${item.title
+                            .toLowerCase()
+                            .replace(/\s+/g, "-")}`,
+                        )
+                      }
                       className="mt-10 w-full rounded-full py-4 bg-yellow-500 text-white font-bold flex justify-center items-center gap-2 hover:bg-yellow-600 transition-all duration-300 shadow-lg"
                     >
                       Book Now
@@ -502,15 +505,18 @@ export default function Sponsorship() {
                       ))}
                     </ul>
 
-                    <button
-                      onClick={() => {
-                        setSelectedPackage(item.title);
-                        setOpenModal(true);
-                      }}
-                      className="mt-10 w-full rounded-full py-4 bg-yellow-500 text-white font-bold flex justify-center items-center gap-2 hover:bg-yellow-600 transition-all duration-300 shadow-lg"
-                    >
-                      Book Now
-                    </button>
+                 <button
+  onClick={() =>
+    navigate(
+      `/sponsorship/${item.title
+        .toLowerCase()
+        .replace(/\s+/g, "-")}`
+    )
+  }
+  className="mt-10 w-full rounded-full py-4 bg-yellow-500 text-white font-bold flex justify-center items-center gap-2 hover:bg-yellow-600 transition-all duration-300 shadow-lg"
+>
+  Book Now
+</button>
                   </div>
                 </motion.div>
               );

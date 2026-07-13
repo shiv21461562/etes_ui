@@ -18,6 +18,9 @@ import TermsConditions from "./pages/footer/TermsConditions";
 import RefundPolicy from "./pages/footer/RefundPolicy";
 import FAQ from "./pages/footer/FAQ";
 import ScrollToTop from "./components/ScrollToTop";
+
+import SponsorshipDetail from "./pages/SponsorshipDetail";
+import BookingForm from "./pages/BookingForm";
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -47,6 +50,9 @@ function App() {
         <Route path="/speakers" element={<Speakers />} />
         <Route path="/about-details" element={<AboutDetails />} />
         <Route path="/sponsorship" element={<Sponsorship />} />
+        <Route path="/sponsorship/:type" element={<SponsorshipDetail />} />
+        <Route path="/booking" element={<BookingForm />} />
+        
 
         {/* footer */}
 
