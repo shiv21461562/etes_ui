@@ -38,7 +38,7 @@ const packages = [
   {
     title: "Platinum Sponsor",
     icon: Crown,
-    price: "₹6,00,000/- + GST",
+    price: "₹8,00,000/- + GST",
     altPrice: "or 7000 $",
     color: "from-yellow-300 to-yellow-600",
     border: "border-yellow-500",
@@ -56,7 +56,7 @@ const packages = [
   {
     title: "Gold Sponsor",
     icon: Gem,
-    price: "₹5,00,000/- + GST",
+    price: "₹6,00,000/- + GST",
     altPrice: "or 6000 $",
     color: "from-amber-300 to-yellow-500",
     border: "border-amber-400",
@@ -180,7 +180,7 @@ export default function Sponsorship() {
         }}
       >
         {/* Background Blur */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#d4af3720,transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#ffffff12,transparent_85%)]" />
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -257,16 +257,6 @@ export default function Sponsorship() {
                 alt="ETES Sponsorship"
                 className="w-full rounded-3xl object-cover shadow-2xl"
               /> */}
-
-              {/* Floating Card */}
-
-              <div className="absolute -bottom-76 -left-8 bg-[#111111]/90 backdrop-blur-xl rounded-3xl p-6 border border-yellow-500">
-                <p className="text-gray-400 text-sm">Platinum Sponsor</p>
-
-                <h3 className="text-yellow-400 text-3xl font-bold mt-2">
-                  ₹6 Lakh
-                </h3>
-              </div>
             </motion.div>
           </div>
         </div>
@@ -505,18 +495,18 @@ export default function Sponsorship() {
                       ))}
                     </ul>
 
-                 <button
-  onClick={() =>
-    navigate(
-      `/sponsorship/${item.title
-        .toLowerCase()
-        .replace(/\s+/g, "-")}`
-    )
-  }
-  className="mt-10 w-full rounded-full py-4 bg-yellow-500 text-white font-bold flex justify-center items-center gap-2 hover:bg-yellow-600 transition-all duration-300 shadow-lg"
->
-  Book Now
-</button>
+                    <button
+                      onClick={() =>
+                        navigate(
+                          `/sponsorship/${item.title
+                            .toLowerCase()
+                            .replace(/\s+/g, "-")}`,
+                        )
+                      }
+                      className="mt-10 w-full rounded-full py-4 bg-yellow-500 text-white font-bold flex justify-center items-center gap-2 hover:bg-yellow-600 transition-all duration-300 shadow-lg"
+                    >
+                      Book Now
+                    </button>
                   </div>
                 </motion.div>
               );
@@ -548,7 +538,7 @@ export default function Sponsorship() {
               <p className="mt-3 text-gray-500">Starting From</p>
 
               <h3 className="text-4xl font-black text-yellow-500 mt-2">
-                ₹1500
+                ₹5000
               </h3>
 
               <button

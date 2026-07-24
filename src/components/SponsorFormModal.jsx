@@ -53,7 +53,7 @@ export default function SponsorFormModal({ open, onClose, packageName }) {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-      <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 px-8 py-6 flex justify-between items-center">
+        <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 px-8 py-6 flex justify-between items-center">
           <div>
             <div className="flex items-center gap-2">
               <Award className="w-7 h-7 text-black" />

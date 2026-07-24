@@ -44,7 +44,7 @@ const speakers = [
   },
   {
     name: "Er. P.K Pattanaik",
-    role: "Senior General Manager",
+    role: "Director",
     org: "(OPTCL)",
     img: PKPattanaik,
   },
@@ -56,7 +56,7 @@ const speakers = [
   },
   {
     name: "Shyam Ravindran",
-    role: "Senior Manager (Technical)",
+    role: "Managing Director",
     org: "(Sonel India)",
     img: ShyamRavindran,
   },

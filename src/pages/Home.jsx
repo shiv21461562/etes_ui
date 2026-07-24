@@ -11,16 +11,20 @@ import WhyAttend from "../components/home/WhyAttend";
 import SponsorsSection from "../components/home/SponsorsSection";
 import ThinkInkLink from "../components/home/ThinkInkLink";
 import ThemeSection from "../components/home/ThemeSection";
+import EventVenue from "../components/home/EventVenue";
 export default function Home() {
   return (
     <>
       <Hero />
+      
        <Services/>
        <WhyAttend />
          
       <About />
+       <EventVenue />
       <ThinkInkLink/>
       <ThemeSection/>
+        <EventVenue />
         
        <EventStats />
       <MediaPartners/>

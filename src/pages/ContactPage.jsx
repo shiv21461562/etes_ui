@@ -336,3 +336,338 @@ const handleSubmit = async (e) => {
     </main>
   );
 }
+
+
+
+
+
+// import { Phone, Mail, MapPin, Clock, Send, HelpCircle } from "lucide-react";
+// import { MessageCircle } from "lucide-react";
+// import { useState } from "react";
+// import { sendContact } from "../services/contactApi";
+// import toast from "react-hot-toast";
+
+// export default function Contactpage() {
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     email: "",
+//     message: "",
+//   });
+
+//   const handleChange = (e) => {
+//     setFormData({
+//       ...formData,
+//       [e.target.name]: e.target.value,
+//     });
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     try {
+//       const res = await sendContact(formData);
+//       toast.success("Your message has been sent successfully. We'll get back to you soon!");
+
+//       setFormData({
+//         name: "",
+//         email: "",
+//         message: "",
+//       });
+//     } catch (err) {
+//       alert(err.response?.data?.message || "Something went wrong");
+//     }
+//   };
+
+//   return (
+//     <main className="pt-28 min-h-screen bg-white font-['Jost',sans-serif]">
+//       <style>{`
+//         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Jost:wght@300;400;500;600&display=swap');
+//       `}</style>
+
+//       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+//         {/* ================= Contact Section ================= */}
+
+//         <section className="grid lg:grid-cols-2 gap-16 items-start">
+//           {/* Left Content */}
+//           <div>
+//             <span className="inline-flex items-center gap-3 text-[#c9962f] uppercase tracking-[5px] text-sm mb-6 before:content-[''] before:w-9 before:h-px before:bg-[#c9962f]">
+//               Contact Us
+//             </span>
+
+//             <h1 className="font-['Playfair_Display',serif] font-extrabold text-4xl md:text-5xl leading-tight text-[#c9962f]">
+//               Contact ETES Event Team
+//             </h1>
+
+//             <p className="mt-6 text-gray-600 text-lg leading-8 max-w-lg">
+//               Get in touch with us for inquiries regarding ETES 2026,
+//               registration, sponsorship opportunities, media partnerships,
+//               exhibition bookings or any other questions. Our team will get back
+//               to you as soon as possible.
+//             </p>
+
+//             <div className="mt-12 space-y-8">
+//               <div className="border-l-2 border-[#c9962f] pl-5 py-1 hover:pl-6 transition-all duration-300">
+//                 <div className="flex items-center gap-2 text-[#c9962f]">
+//                   <MessageCircle size={16} />
+//                   <h3 className="font-['Playfair_Display',serif] text-xl font-bold">
+//                     WhatsApp Support
+//                   </h3>
+//                 </div>
+
+//                 <a
+//                   href="https://wa.me/919873168426"
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   className="mt-3 inline-block text-gray-600 hover:text-[#25D366] transition"
+//                 >
+//                   +91 98731 68426
+//                 </a>
+//               </div>
+
+//               <div className="border-l-2 border-[#c9962f] pl-5 py-1 hover:pl-6 transition-all duration-300">
+//                 <div className="flex items-center gap-2 text-[#c9962f]">
+//                   <Mail size={16} />
+//                   <h3 className="font-['Playfair_Display',serif] text-xl font-bold">
+//                     Inquiry
+//                   </h3>
+//                 </div>
+
+//                 <p className="mt-3 font-semibold text-gray-800">Neha Chauhan</p>
+
+//                 <p className="text-gray-500">
+//                   Head of Marketing &amp; ETES Head
+//                 </p>
+
+//                 <a
+//                   href="mailto:neha@electricalmirror.net"
+//                   className="mt-2 inline-block text-gray-600 hover:text-[#c9962f] transition"
+//                 >
+//                   neha@electricalmirror.net
+//                 </a>
+
+//                 <p className="text-gray-700">+91 7428 693 331</p>
+//               </div>
+
+//               <div className="border-l-2 border-[#c9962f] pl-5 py-1 hover:pl-6 transition-all duration-300">
+//                 <div className="flex items-center gap-2 text-[#c9962f]">
+//                   <Mail size={16} />
+//                   <h3 className="font-['Playfair_Display',serif] text-xl font-bold">
+//                     For Stall Booking &amp; Sponsorship
+//                   </h3>
+//                 </div>
+
+//                 <p className="mt-3 font-semibold text-gray-800">Hemant</p>
+
+//                 <p className="text-gray-500">Manager – Sales &amp; Marketing</p>
+
+//                 <a
+//                   href="mailto:hemant@electricalmirror.net"
+//                   className="mt-2 inline-block text-gray-600 hover:text-[#c9962f] transition"
+//                 >
+//                   hemant@electricalmirror.net
+//                 </a>
+
+//                 <p className="text-gray-700">+91 9999395282</p>
+//               </div>
+//             </div>
+//           </div>
+
+//           {/* Contact Form */}
+//           <div className="bg-white border border-[#c9962f]/20 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-shadow duration-500">
+//             <h2 className="font-['Playfair_Display',serif] text-3xl font-bold mb-8 text-[#c9962f]">
+//               Send us a Message
+//             </h2>
+
+//             <form className="space-y-6" onSubmit={handleSubmit}>
+//               <div>
+//                 <label className="block mb-2 text-sm text-gray-600">
+//                   Enter your first name
+//                 </label>
+
+//                 <input
+//                   type="text"
+//                   name="name"
+//                   value={formData.name}
+//                   onChange={handleChange}
+//                   placeholder="Your first name goes here"
+//                   className="w-full rounded-xl bg-gray-50 border border-gray-200 px-5 py-4 outline-none focus:border-[#c9962f] focus:ring-2 focus:ring-[#c9962f]/20 transition placeholder:text-gray-400 text-gray-900"
+//                   required
+//                 />
+//               </div>
+
+//               <div>
+//                 <label className="block mb-2 text-sm text-gray-600">
+//                   Provide your email address
+//                 </label>
+
+//                 <input
+//                   type="email"
+//                   name="email"
+//                   value={formData.email}
+//                   onChange={handleChange}
+//                   placeholder="Your email address here"
+//                   className="w-full rounded-xl bg-gray-50 border border-gray-200 px-5 py-4 outline-none focus:border-[#c9962f] focus:ring-2 focus:ring-[#c9962f]/20 transition placeholder:text-gray-400 text-gray-900"
+//                   required
+//                 />
+//               </div>
+
+//               <div>
+//                 <label className="block mb-2 text-sm text-gray-600">
+//                   Your Message
+//                 </label>
+
+//                 <textarea
+//                   rows={6}
+//                   name="message"
+//                   value={formData.message}
+//                   onChange={handleChange}
+//                   placeholder="Write your message here..."
+//                   className="w-full rounded-xl bg-gray-50 border border-gray-200 px-5 py-4 outline-none focus:border-[#c9962f] focus:ring-2 focus:ring-[#c9962f]/20 transition resize-none placeholder:text-gray-400 text-gray-900"
+//                   required
+//                 />
+//               </div>
+
+//               <button
+//                 type="submit"
+//                 className="w-full inline-flex items-center justify-center gap-2 py-4 rounded-xl bg-gradient-to-r from-[#c9962f] to-[#e8b84b] text-white font-bold uppercase tracking-wider text-sm hover:shadow-lg hover:shadow-[#c9962f]/30 transition-all duration-300 transform hover:scale-[1.02]"
+//               >
+//                 Submit Your Request <Send size={16} />
+//               </button>
+//             </form>
+//           </div>
+//         </section>
+
+//         {/* ================= Location Section ================= */}
+
+//         <section className="grid lg:grid-cols-2 gap-16 mt-24 items-center border-t border-[#c9962f]/20 pt-24">
+//           <div>
+//             <span className="inline-flex items-center gap-3 text-[#c9962f] uppercase tracking-[5px] text-sm mb-6 before:content-[''] before:w-9 before:h-px before:bg-[#c9962f]">
+//               Event Location
+//             </span>
+
+//             <h2 className="font-['Playfair_Display',serif] text-4xl font-bold text-[#c9962f]">
+//               Location Details
+//             </h2>
+
+//             <p className="mt-6 text-gray-600 leading-8 max-w-md">
+//               Visit us at the ETES 2026 venue and experience India's premier
+//               Electrical &amp; Energy Exhibition. We look forward to welcoming
+//               exhibitors, delegates, sponsors and industry leaders from across
+//               the country.
+//             </p>
+
+//             <div className="mt-10 space-y-7">
+//               <div className="flex gap-4 group cursor-pointer">
+//                 <div className="w-10 h-10 rounded-full border border-[#c9962f] flex items-center justify-center text-[#c9962f] group-hover:bg-[#c9962f] group-hover:text-white transition-all duration-300 shrink-0">
+//                   <MapPin size={18} />
+//                 </div>
+//                 <div>
+//                   <h3 className="font-semibold text-lg text-gray-800 group-hover:text-[#c9962f] transition-colors duration-300">
+//                     Venue
+//                   </h3>
+//                   <p className="text-gray-600 mt-1">Scope Complex</p>
+//                   <p className="text-gray-600">New Delhi - 110001</p>
+//                 </div>
+//               </div>
+
+//               <div className="flex gap-4 group cursor-pointer">
+//                 <div className="w-10 h-10 rounded-full border border-[#c9962f] flex items-center justify-center text-[#c9962f] group-hover:bg-[#c9962f] group-hover:text-white transition-all duration-300 shrink-0">
+//                   <Clock size={18} />
+//                 </div>
+//                 <div>
+//                   <h3 className="font-semibold text-lg text-gray-800 group-hover:text-[#c9962f] transition-colors duration-300">
+//                     Event Timing
+//                   </h3>
+//                   <p className="text-gray-600 mt-1">9:00 AM – 5:00 PM</p>
+//                 </div>
+//               </div>
+
+//               <div className="flex gap-4 group cursor-pointer">
+//                 <div className="w-10 h-10 rounded-full border border-[#c9962f] flex items-center justify-center text-[#c9962f] group-hover:bg-[#c9962f] group-hover:text-white transition-all duration-300 shrink-0">
+//                   <Mail size={18} />
+//                 </div>
+//                 <div>
+//                   <h3 className="font-semibold text-lg text-gray-800 group-hover:text-[#c9962f] transition-colors duration-300">
+//                     Email
+//                   </h3>
+//                   <p className="text-gray-600 mt-1">info@etesevent.com</p>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+
+//           <div className="overflow-hidden rounded-3xl border-2 border-[#c9962f]/20 shadow-xl hover:shadow-2xl hover:border-[#c9962f]/40 transition-all duration-500">
+//             <iframe
+//               title="ETES Location"
+//               src="https://maps.google.com/maps?q=Bharat%20Mandapam%20New%20Delhi&t=&z=14&ie=UTF8&iwloc=&output=embed"
+//               width="100%"
+//               height="500"
+//               loading="lazy"
+//               className="border-0"
+//             ></iframe>
+//           </div>
+//         </section>
+
+//         {/* ================= FAQ Section ================= */}
+
+//         <section className="mt-24 border-t border-[#c9962f]/20 pt-24">
+//           <div className="text-center mb-14">
+//             <span className="inline-flex items-center gap-3 text-[#c9962f] uppercase tracking-[5px] text-sm mb-5 before:content-[''] before:w-9 before:h-px before:bg-[#c9962f] after:content-[''] after:w-9 after:h-px after:bg-[#c9962f]">
+//               Need Help?
+//             </span>
+
+//             <h2 className="font-['Playfair_Display',serif] text-4xl font-bold text-[#c9962f]">
+//               Frequently Asked Questions
+//             </h2>
+//           </div>
+
+//           <div className="grid md:grid-cols-2 gap-8">
+//             {[
+//               {
+//                 q: "How can I register?",
+//                 a: "Visit the Registration page and complete the online registration form to receive your confirmation.",
+//               },
+//               {
+//                 q: "How can I become an exhibitor?",
+//                 a: "Contact our sales team for booth booking and sponsorship opportunities.",
+//               },
+//               {
+//                 q: "Is parking available?",
+//                 a: "Yes. Paid parking facilities are available at the venue for exhibitors and visitors.",
+//               },
+//               {
+//                 q: "Need immediate assistance?",
+//                 a: "Call our support team or send us an email. We usually respond within 24 hours.",
+//               },
+//             ].map((item, i) => (
+//               <div
+//                 key={i}
+//                 className="group relative overflow-hidden bg-white border-2 border-[#c9962f]/10 rounded-2xl p-6 hover:border-[#c9962f] transition-all duration-500 hover:shadow-xl hover:shadow-[#c9962f]/10"
+//               >
+//                 {/* Animated Gold Background */}
+//                 <div className="absolute inset-0 bg-gradient-to-r from-[#c9962f] to-[#e8b84b] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"></div>
+
+//                 {/* Content */}
+//                 <div className="relative z-10">
+//                   <div className="flex items-center gap-3 mb-3">
+//                     <div className="w-8 h-8 rounded-full border-2 border-[#c9962f] flex items-center justify-center text-[#c9962f] group-hover:bg-white group-hover:text-[#c9962f] group-hover:border-white transition-all duration-300 shrink-0">
+//                       <HelpCircle size={14} />
+//                     </div>
+
+//                     <h3 className="font-semibold text-xl text-gray-900 group-hover:text-white transition-colors duration-300">
+//                       {item.q}
+//                     </h3>
+//                   </div>
+
+//                   <p className="text-gray-600 pl-11 group-hover:text-white/90 transition-colors duration-300">
+//                     {item.a}
+//                   </p>
+//                 </div>
+//               </div>
+//             ))}
+//           </div>
+//         </section>
+//       </div>
+//     </main>
+//   );
+// }

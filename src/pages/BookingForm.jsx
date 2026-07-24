@@ -1,5 +1,7 @@
-import { useLocation } from "react-router-dom";
+import { useLocation ,useNavigate } from "react-router-dom";
 import { useState } from "react";
+
+import toast from "react-hot-toast";
 import {
   createBooking,
   createOrder,
@@ -8,6 +10,7 @@ import {
 
 const BookingForm = () => {
   const { state } = useLocation();
+    const navigate = useNavigate(); 
 
   const sponsor = state?.sponsor;
   const qty = state?.qty;
@@ -63,10 +66,11 @@ const BookingForm = () => {
         setBookingId(id);
 
         console.log("Booking Saved", bookingRes.data);
+        toast.success("Your booking has been submitted successfully!");
       }
     } catch (err) {
       console.log(err);
-      alert(err.response?.data?.message || "Booking Failed");
+      toast.error(err.response?.data?.message || "Booking Failed");
     }
   };
 
@@ -125,7 +129,7 @@ const BookingForm = () => {
               razorpay_signature: response.razorpay_signature,
             });
 
-            alert("Payment Successful 🎉");
+            toast.success("Payment Successful 🎉");
 
             console.log(response);
 
@@ -133,7 +137,7 @@ const BookingForm = () => {
           } catch (error) {
             console.log(error);
 
-            alert("Payment Verification Failed");
+            toast.error("Payment Verification Failed");
           }
         },
 
@@ -151,8 +155,12 @@ const BookingForm = () => {
       const razor = new window.Razorpay(options);
       razor.open();
     } catch (error) {
-      console.error(error);
-      alert(error.response?.data?.message || "Something went wrong");
+      console.log("Verify Error =>", error.response?.data);
+      console.log(error);
+
+      toast.error(
+        error.response?.data?.message || "Payment Verification Failed",
+      );
     }
   };
   return (

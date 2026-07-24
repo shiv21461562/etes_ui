@@ -21,6 +21,8 @@ import ScrollToTop from "./components/ScrollToTop";
 
 import SponsorshipDetail from "./pages/SponsorshipDetail";
 import BookingForm from "./pages/BookingForm";
+import BackToTop from "./components/BackToTop";
+import WhatsAppButton from "./components/WhatsAppButton";
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -40,6 +42,7 @@ function App() {
     <>
       {" "}
       <ScrollToTop />
+\
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -64,6 +67,8 @@ function App() {
 
         <Route path="/faq" element={<FAQ />} />
       </Routes>
+        <BackToTop />
+          <WhatsAppButton />
       <Footer />
     </>
   );
