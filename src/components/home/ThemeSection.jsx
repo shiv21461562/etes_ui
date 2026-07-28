@@ -179,39 +179,37 @@ const ThemeSection = () => {
             </div>
           </motion.div> */}
 
-{/* video */}
+          {/* video */}
 
           <motion.div
-  initial={{ opacity: 0, x: 30 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  viewport={{ once: true }}
-  className="relative"
->
-  <div >
-    
-    <video
-      className="w-full h-64 object-cover rounded-2xl"
-      src="/videos/ai-electric.mp4" // apni video ka path
-      autoPlay
-      loop
-      muted
-      playsInline
-    />
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <div>
+              <video
+                className="w-full h-80 object-cover rounded-2xl"
+                src="/videos/ai2.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
 
-    <h3 className="text-center text-black
-     text-2xl font-bold mt-6">
-      AI Driven Electrical Future
-    </h3>
+              <h3
+                className="text-center text-black
+     text-2xl font-bold mt-6"
+              >
+                AI Driven Electrical Future
+              </h3>
 
-    <p className="text-center text-gray-800 mt-3 leading-relaxed text-sm">
-      Smarter grids, intelligent monitoring, renewable integration,
-      automation and next-generation power infrastructure.
-    </p>
-  </div>
-</motion.div>
-
-
-
+              <p className="text-center text-gray-800 mt-3 leading-relaxed text-sm">
+                Smarter grids, intelligent monitoring, renewable integration,
+                automation and next-generation power infrastructure.
+              </p>
+            </div>
+          </motion.div>
         </div>
 
         {/* Conference Topics */}

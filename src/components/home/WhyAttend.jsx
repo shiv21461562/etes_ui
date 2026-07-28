@@ -36,11 +36,15 @@ const features = [
   },
 ];
 
+// Smooth, decelerating ease — feels gentle rather than snappy
+const smoothEase = [0.16, 1, 0.3, 1];
+
 const container = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.15,
+      staggerChildren: 0.18,
+      delayChildren: 0.1,
     },
   },
 };
@@ -48,13 +52,16 @@ const container = {
 const item = {
   hidden: {
     opacity: 0,
-    y: 40,
+    y: 60,
+    scale: 0.97,
   },
   show: {
     opacity: 1,
     y: 0,
+    scale: 1,
     transition: {
-      duration: 0.6,
+      duration: 0.9,
+      ease: smoothEase,
     },
   },
 };
@@ -71,10 +78,10 @@ export default function WhyAttend() {
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 35 }}
+          initial={{ opacity: 0, y: 55 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          transition={{ duration: 1.1, ease: smoothEase }}
+          viewport={{ once: true, margin: "-120px" }}
           className="text-center max-w-3xl mx-auto"
         >
           <span className="inline-flex rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-5 py-2 text-xs font-semibold uppercase tracking-[4px] text-[#D4AF37]">
@@ -100,7 +107,7 @@ export default function WhyAttend() {
           variants={container}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           className="mt-16 grid gap-7 md:grid-cols-2 xl:grid-cols-3"
         >
           {features.map((feature, index) => {
@@ -114,6 +121,7 @@ export default function WhyAttend() {
                 whileHover={{
                   y: -10,
                   scale: 1.02,
+                  transition: { duration: 0.5, ease: smoothEase },
                 }}
                 className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 transition-all duration-500 cursor-pointer"
               >
@@ -149,10 +157,10 @@ export default function WhyAttend() {
 
         {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 35 }}
+          initial={{ opacity: 0, y: 45 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.9, ease: smoothEase, delay: 0.1 }}
+          viewport={{ once: true, margin: "-80px" }}
           className="mt-16 flex justify-center"
         >
       <button

@@ -12,29 +12,35 @@ import SponsorsSection from "../components/home/SponsorsSection";
 import ThinkInkLink from "../components/home/ThinkInkLink";
 import ThemeSection from "../components/home/ThemeSection";
 import EventVenue from "../components/home/EventVenue";
+import Countdown from "../components/home/Countdown";
+import Testimonials from "../components/home/Testimonials";
+import Faq from "../components/home/Faq";
 export default function Home() {
   return (
     <>
       <Hero />
-      
-       <Services/>
-       <WhyAttend />
-         
+
       <About />
-       <EventVenue />
-      <ThinkInkLink/>
-      <ThemeSection/>
-        <EventVenue />
-        
-       <EventStats />
-      <MediaPartners/>
-      <SponsorsSection/>
+      <Countdown />
+      <EventVenue />
+      <WhyAttend />
+
      
-   
+       <Services />
+      <ThinkInkLink />
+      <ThemeSection />
+
+      <EventStats />
+       <Testimonials />
+      <Faq />
+     
+      <MediaPartners />
+      <SponsorsSection />
+
       <Gallery />
       <Partners />
       <SupportedBy />
-      <ExhibitionPage/>
+      <ExhibitionPage />
     </>
   );
 }

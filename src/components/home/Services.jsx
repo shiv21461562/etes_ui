@@ -82,10 +82,7 @@ export default function Services() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          {/* Tagline */}
-          <span className="inline-block px-5 py-2 mb-5 text-sm font-semibold tracking-widest uppercase text-[#C89A2B] bg-[#FFF8E8] border border-[#E6C76A] rounded-full">
-            What We Offer
-          </span>
+      
 
           <h2 className="text-5xl md:text-6xl font-bold leading-tight">
             <span className="text-black">Conference  </span>

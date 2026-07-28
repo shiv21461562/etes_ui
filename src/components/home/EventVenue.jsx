@@ -62,7 +62,7 @@ export default function Venue() {
 
   <div className="absolute bottom-6 left-6 z-10">
     <span className="inline-block bg-orange-500 px-4 py-2 rounded-full text-sm font-semibold text-white">
-      RE PAX INDIA 2026
+      ETES INDIA 2026
     </span>
 
     <h3 className="mt-3 text-4xl font-bold text-[#D4AF37] drop-shadow-lg">

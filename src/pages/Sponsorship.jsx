@@ -225,7 +225,7 @@ export default function Sponsorship() {
 
               <div className="flex gap-10 mt-14">
                 <div>
-                  <h3 className="text-yellow-400 text-4xl font-bold">5000+</h3>
+                  <h3 className="text-yellow-400 text-4xl font-bold">200+</h3>
 
                   <p className="text-gray-400">Visitors</p>
                 </div>
@@ -538,7 +538,7 @@ export default function Sponsorship() {
               <p className="mt-3 text-gray-500">Starting From</p>
 
               <h3 className="text-4xl font-black text-yellow-500 mt-2">
-                ₹5000
+                ₹2999
               </h3>
 
               <button

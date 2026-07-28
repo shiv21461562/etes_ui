@@ -16,12 +16,20 @@ import {
   CheckCircle2,
   ArrowRight,
   Sparkles,
+  Tag,
+  Info,
+  IndianRupee,
 } from "lucide-react";
 
 import registrationImage from "../assets/REG.png";
 
 import { registerUser } from "../services/registrationApi";
 import toast from "react-hot-toast";
+
+// Razorpay payment link for Delegate registration (update later when needed)
+const DELEGATE_PAYMENT_LINK = "https://rzp.io/rzp/BN6quaL";
+const DELEGATE_FEE = 5000;
+
 // Animation variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -67,6 +75,7 @@ export default function ETES2026() {
     email: "",
     phone: "",
     message: "",
+    regType: "",
   });
   const [remember, setRemember] = useState(true);
   const [submitted, setSubmitted] = useState(false);
@@ -76,46 +85,58 @@ export default function ETES2026() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  try {
-    setLoading(true);
-
-    const payload = {
-      full_name: form.name,
-      email: form.email,
-      phone: form.phone,
-      message: form.message,
-    };
-
-    const res = await registerUser(payload);
-
-    if (res.data.success) {
-      toast.success("Registration submitted successfully!");
-
-      setForm({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-      });
-
-      setTimeout(() => {
-        setSubmitted(false);
-      }, 3000);
+    // Show confirmation for Delegate registration
+    if (form.regType === "Delegate") {
+      const confirmed = window.confirm(
+        `⚠️ DELEGATE REGISTRATION\n\nYou are registering as a Delegate.\nRegistration Fee: ₹${DELEGATE_FEE.toLocaleString()}/-\n\nClick "OK" to proceed with payment.\nClick "Cancel" to go back.`
+      );
+      
+      if (!confirmed) {
+        return; // User cancelled
+      }
     }
-  } catch (error) {
-    console.error(error);
 
-    alert(
-      error.response?.data?.message ||
-      "Something went wrong."
-    );
-  } finally {
-    setLoading(false);
-  }
-};
+    try {
+      setLoading(true);
+
+      const payload = {
+        full_name: form.name,
+        email: form.email,
+        phone: form.phone,
+        message: form.message,
+        registration_type: form.regType,
+      };
+
+      const res = await registerUser(payload);
+
+      if (res.data.success) {
+        toast.success("Registration submitted successfully!");
+
+        // Delegate hai to registration save hone ke baad payment page kholo
+        if (form.regType === "Delegate") {
+          window.location.href = DELEGATE_PAYMENT_LINK;
+          return;
+        }
+
+        setForm({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+          regType: "",
+        });
+      }
+    } catch (error) {
+      console.error(error);
+
+      alert(error.response?.data?.message || "Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const stats = [
     {
@@ -144,8 +165,6 @@ export default function ETES2026() {
         viewport={{ once: true, amount: 0.2 }}
         className="relative px-6 md:px-12 py-20 md:py-28 overflow-hidden"
       >
-        {/* Animated Background Glow */}
-
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -300,222 +319,294 @@ export default function ETES2026() {
         </motion.div>
       </motion.section>
 
+      {/* REGISTRATION FORM - Clean White Card */}
+      <motion.section
+        id="registration-form"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        className="px-6 md:px-12 py-20 bg-white"
+      >
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <motion.div
+            variants={fadeInUp}
+            className="flex items-center justify-center gap-3 mb-4"
+          >
+            <span className="h-px w-12 bg-gradient-to-r from-transparent to-amber-500" />
+            <span className="text-amber-500 text-xs font-bold tracking-widest">
+              REGISTRATION
+            </span>
+            <span className="h-px w-12 bg-gradient-to-l from-transparent to-amber-500" />
+          </motion.div>
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl md:text-4xl font-extrabold mb-3"
+          >
+            <span className="text-gray-900">Get Your</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600 ml-3">
+              Pass Now
+            </span>
+          </motion.h2>
+          <motion.p
+            variants={fadeInUp}
+            className="text-gray-600 max-w-lg mx-auto"
+          >
+            Fill in your details below and our team will get in touch with you
+            shortly.
+          </motion.p>
+        </motion.div>
 
-{/* REGISTRATION FORM - Clean White Card */}
-<motion.section
-  id="registration-form"
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.2 }}
-  className="px-6 md:px-12 py-20 bg-white"
->
-  <motion.div
-    variants={staggerContainer}
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true }}
-    className="text-center mb-12"
-  >
-    <motion.div
-      variants={fadeInUp}
-      className="flex items-center justify-center gap-3 mb-4"
-    >
-      <span className="h-px w-12 bg-gradient-to-r from-transparent to-amber-500" />
-      <span className="text-amber-500 text-xs font-bold tracking-widest">
-        REGISTRATION
-      </span>
-      <span className="h-px w-12 bg-gradient-to-l from-transparent to-amber-500" />
-    </motion.div>
-    <motion.h2
-      variants={fadeInUp}
-      className="text-4xl md:text-4xl font-extrabold mb-3"
-    >
-      <span className="text-gray-900">Get Your</span>
-      <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600 ml-3">
-        Pass Now
-      </span>
-    </motion.h2>
-    <motion.p
-      variants={fadeInUp}
-      className="text-gray-600 max-w-lg mx-auto"
-    >
-      Fill in your details below and our team will get in touch with you
-      shortly.
-    </motion.p>
-  </motion.div>
+        {/* Two Column Layout - Image & Form */}
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 items-center">
+          {/* Image Section */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="hidden lg:block"
+          >
+            <div className="relative rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+              <img
+                src={registrationImage}
+                alt="ETES 2026 Registration"
+                className="w-full h-[600px] object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-8">
+                <div>
+                  <h3 className="text-white text-2xl font-bold">
+                    Register Now
+                  </h3>
+                  <p className="text-white/80 text-sm mt-1">
+                    Secure your spot at ETES 2026
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
-  {/* Two Column Layout - Image & Form */}
-  <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 items-center">
-    
-    {/* Image Section */}
-    <motion.div
-      initial={{ opacity: 0, x: -40 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.7 }}
-      viewport={{ once: true }}
-      className="hidden lg:block"
-    >
-      <div className="relative rounded-2xl overflow-hidden shadow-lg border border-gray-100">
-    <img
-  src={registrationImage}
-  alt="ETES 2026 Registration"
-  className="w-full h-[600px] object-cover"
-/>
-        {/* Overlay with text */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-8">
-          <div>
-            <h3 className="text-white text-2xl font-bold">Register Now</h3>
-            <p className="text-white/80 text-sm mt-1">Secure your spot at ETES 2026</p>
-          </div>
+          {/* Form Section with Transparent Inputs */}
+          <motion.form
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            viewport={{ once: true }}
+            onSubmit={handleSubmit}
+            className="rounded-2xl p-8 md:p-10 border border-gray-100 bg-white"
+          >
+            <div className="space-y-5">
+              {/* Full Name */}
+              <motion.div
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                  Full Name <span className="text-amber-500">*</span>
+                </label>
+                <div className="flex items-center gap-3 bg-transparent border-b-2 border-amber-500 px-0 py-2 focus-within:border-amber-400 transition-all duration-300">
+                  <User size={18} className="text-amber-500 flex-shrink-0" />
+                  <input
+                    type="text"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    placeholder="Enter your full name"
+                    required
+                    className="bg-transparent outline-none w-full text-gray-700 placeholder:text-gray-400 text-sm"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Email */}
+              <motion.div
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                  Email Address <span className="text-amber-500">*</span>
+                </label>
+                <div className="flex items-center gap-3 bg-transparent border-b-2 border-amber-500 px-0 py-2 focus-within:border-amber-400 transition-all duration-300">
+                  <Mail size={18} className="text-amber-500 flex-shrink-0" />
+                  <input
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="your.email@example.com"
+                    required
+                    className="bg-transparent outline-none w-full text-gray-700 placeholder:text-gray-400 text-sm"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Phone */}
+              <motion.div
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                  Phone Number <span className="text-amber-500">*</span>
+                </label>
+                <div className="flex items-center gap-3 bg-transparent border-b-2 border-amber-500 px-0 py-2 focus-within:border-amber-400 transition-all duration-300">
+                  <Phone size={18} className="text-amber-500 flex-shrink-0" />
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={form.phone}
+                    onChange={handleChange}
+                    placeholder="+91 98765 43210"
+                    required
+                    className="bg-transparent outline-none w-full text-gray-700 placeholder:text-gray-400 text-sm"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Registration Type (Enum Dropdown) */}
+              <motion.div
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                  Registration Type <span className="text-amber-500">*</span>
+                </label>
+                <div className="flex items-center gap-3 bg-transparent border-b-2 border-amber-500 px-0 py-2 focus-within:border-amber-400 transition-all duration-300">
+                  <Tag size={18} className="text-amber-500 flex-shrink-0" />
+                  <select
+                    name="regType"
+                    value={form.regType}
+                    onChange={handleChange}
+                    required
+                    className="bg-transparent outline-none w-full text-gray-700 text-sm appearance-none cursor-pointer"
+                  >
+                    <option value="" disabled>
+                      Select registration type
+                    </option>
+                    <option value="Speaker">Speaker</option>
+                    <option value="Visitor">Visitor</option>
+                    <option value="Delegate">Delegate (₹2999 + (18%) GST/-)</option>
+                  </select>
+                </div>
+
+                {/* Fee Info based on selected type */}
+                {form.regType === "Delegate" && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-3 bg-amber-50 border-2 border-amber-400 rounded-lg px-4 py-3"
+                  >
+                    <div className="flex items-start gap-3">
+                      <div className="flex-shrink-0 mt-0.5">
+                        <Info size={18} className="text-amber-600" />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-sm font-bold text-amber-800">
+                          <IndianRupee size={14} className="inline mr-1" />
+                          Registration Fee: ₹2999 +(18%) GST/-
+                        </p>
+                        <p className="text-xs text-amber-700 mt-1">
+                          You will be redirected to Razorpay for secure payment.
+                          <br />
+                          <span className="font-semibold">Note:</span> Payment is required to complete your Delegate registration.
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+
+                {(form.regType === "Speaker" || form.regType === "Visitor") && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-3 bg-green-50 border border-green-200 rounded-lg px-4 py-2.5"
+                  >
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 size={16} className="text-green-600" />
+                      <span className="text-xs text-green-700 font-medium">
+                        {form.regType} Pass: <strong>Free Registration</strong>
+                      </span>
+                    </div>
+                  </motion.div>
+                )}
+              </motion.div>
+
+              {/* Message */}
+              <motion.div
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                  Message <span className="text-amber-500">*</span>
+                </label>
+                <div className="flex items-start gap-3 bg-transparent border-b-2 border-amber-500 px-0 py-2 focus-within:border-amber-400 transition-all duration-300">
+                  <Pencil
+                    size={18}
+                    className="text-amber-500 flex-shrink-0 mt-1"
+                  />
+                  <textarea
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    placeholder="Tell us how we can help you..."
+                    required
+                    rows={3}
+                    className="bg-transparent outline-none w-full text-gray-700 placeholder:text-gray-400 text-sm resize-none"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Submit Button */}
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                type="submit"
+                disabled={loading}
+                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-white font-bold text-sm tracking-widest py-4 rounded-xl transition-all duration-300 shadow-lg shadow-amber-400/30 hover:shadow-amber-400/50 mt-4 disabled:opacity-60"
+              >
+                {loading ? (
+                  <>Submitting...</>
+                ) : submitted ? (
+                  <>
+                    <CheckCircle2 size={18} />
+                    SUBMITTED!
+                  </>
+                ) : form.regType === "Delegate" ? (
+                  <>
+                    <IndianRupee size={18} />
+                    PAY ₹2999 & REGISTER
+                  </>
+                ) : (
+                  <>SUBMIT REGISTRATION</>
+                )}
+              </motion.button>
+
+              {/* Privacy Note */}
+              <motion.p
+                variants={fadeInUp}
+                className="flex items-center justify-center gap-2 text-xs text-gray-400 mt-4"
+              >
+                <Lock size={14} />
+                Your information is safe with us. We respect your privacy.
+              </motion.p>
+            </div>
+          </motion.form>
         </div>
-      </div>
-    </motion.div>
-
-    {/* Form Section with Transparent Inputs */}
-    <motion.form
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, delay: 0.2 }}
-      viewport={{ once: true }}
-      onSubmit={handleSubmit}
-      className="rounded-2xl p-8 md:p-10 border border-gray-100 bg-white"
-    >
-      <div className="space-y-5">
-        {/* Full Name */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-            Full Name <span className="text-amber-500">*</span>
-          </label>
-          <div className="flex items-center gap-3 bg-transparent border-b-2 border-amber-500 px-0 py-2 focus-within:border-amber-400 transition-all duration-300">
-            <User size={18} className="text-amber-500 flex-shrink-0" />
-            <input
-              type="text"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              placeholder="Enter your full name"
-              required
-              className="bg-transparent outline-none w-full text-gray-700 placeholder:text-gray-400 text-sm"
-            />
-          </div>
-        </motion.div>
-
-        {/* Email */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-            Email Address <span className="text-amber-500">*</span>
-          </label>
-          <div className="flex items-center gap-3 bg-transparent border-b-2 border-amber-500 px-0 py-2 focus-within:border-amber-400 transition-all duration-300">
-            <Mail size={18} className="text-amber-500 flex-shrink-0" />
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="your.email@example.com"
-              required
-              className="bg-transparent outline-none w-full text-gray-700 placeholder:text-gray-400 text-sm"
-            />
-          </div>
-        </motion.div>
-
-        {/* Phone */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-            Phone Number <span className="text-amber-500">*</span>
-          </label>
-          <div className="flex items-center gap-3 bg-transparent border-b-2 border-amber-500 px-0 py-2 focus-within:border-amber-400 transition-all duration-300">
-            <Phone size={18} className="text-amber-500 flex-shrink-0" />
-            <input
-              type="tel"
-              name="phone"
-              value={form.phone}
-              onChange={handleChange}
-              placeholder="+91 98765 43210"
-              required
-              className="bg-transparent outline-none w-full text-gray-700 placeholder:text-gray-400 text-sm"
-            />
-          </div>
-        </motion.div>
-
-        {/* Message */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-            Message <span className="text-amber-500">*</span>
-          </label>
-          <div className="flex items-start gap-3 bg-transparent border-b-2 border-amber-500 px-0 py-2 focus-within:border-amber-400 transition-all duration-300">
-            <Pencil size={18} className="text-amber-500 flex-shrink-0 mt-1" />
-            <textarea
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              placeholder="Tell us how we can help you..."
-              required
-              rows={3}
-              className="bg-transparent outline-none w-full text-gray-700 placeholder:text-gray-400 text-sm resize-none"
-            />
-          </div>
-        </motion.div>
-
-        {/* Submit Button */}
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          type="submit"
-          disabled={loading}
-          className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-white font-bold text-sm tracking-widest py-4 rounded-xl transition-all duration-300 shadow-lg shadow-amber-400/30 hover:shadow-amber-400/50 mt-4"
-        >
-          {loading ? (
-  <>Submitting...</>
-) : submitted ? (
-            <>
-              <CheckCircle2 size={18} />
-              SUBMITTED!
-            </>
-          ) : (
-            <>
-              SUBMIT REGISTRATION
-            </>
-          )}
-        </motion.button>
-
-        {/* Privacy Note */}
-        <motion.p
-          variants={fadeInUp}
-          className="flex items-center justify-center gap-2 text-xs text-gray-400 mt-4"
-        >
-          <Lock size={14} />
-          Your information is safe with us. We respect your privacy.
-        </motion.p>
-      </div>
-    </motion.form>
-
-  </div>
-</motion.section>
-
-
-
-
+      </motion.section>
     </div>
   );
 }

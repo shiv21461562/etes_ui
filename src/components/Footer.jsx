@@ -109,12 +109,13 @@ export default function Footer() {
       `}</style>
 
       {/* Main Footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6">
+          
           {/* Column 1 - Company Info with Logo */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 text-center md:text-left">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 mb-4">
+            <Link to="/" className="flex items-center justify-center md:justify-start gap-3 mb-4">
               <img
                 src={logo}
                 alt="ETES 2026"
@@ -122,7 +123,7 @@ export default function Footer() {
               />
             </Link>
 
-            <p className="text-sm text-gray-400 leading-relaxed mb-4">
+            <p className="text-sm text-gray-400 leading-relaxed mb-4 max-w-md mx-auto md:mx-0">
               ETES 2026 brings together policymakers, investors, innovators and
               industry leaders driving the future of electrical technology and
               infrastructure development.
@@ -132,27 +133,27 @@ export default function Footer() {
               Tresub Media Pvt Ltd
             </h3>
 
-            <div className="space-y-2.5 text-sm">
-              <div className="flex items-start gap-3">
+            <div className="space-y-2.5 text-sm max-w-md mx-auto md:mx-0">
+              <div className="flex items-start gap-3 justify-center md:justify-start">
                 <MapPin size={16} className="text-[#e8b84b] shrink-0 mt-0.5" />
                 <span className="text-gray-400 text-xs leading-relaxed">
                   Gaur City Mall 14th Floor (Office No. 14130, 14130-A),
                   Sector-04, Greater Noida West - 201318, Uttar Pradesh, India
                 </span>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 justify-center md:justify-start">
                 <Phone size={16} className="text-[#e8b84b] shrink-0" />
                 <span className="text-gray-300 text-sm font-medium">
                   +91-120-5162126
                 </span>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 justify-center md:justify-start">
                 <PhoneCall size={16} className="text-[#e8b84b] shrink-0" />
                 <span className="text-gray-300 text-sm font-medium">
                   +91 7428 693 331
                 </span>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 justify-center md:justify-start">
                 <Mail size={16} className="text-[#e8b84b] shrink-0" />
                 <a
                   href="mailto:neha@electricalmirror.net"
@@ -161,7 +162,7 @@ export default function Footer() {
                   neha@electricalmirror.net
                 </a>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 justify-center md:justify-start">
                 <Globe size={16} className="text-[#e8b84b] shrink-0" />
                 <a
                   href="https://www.electricalmirror.net"
@@ -175,8 +176,8 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2 - Navigation (Home, About, Speakers, Gallery, Contact) */}
-          <div>
+          {/* Column 2 - Navigation */}
+          <div className="text-center md:text-left">
             <h3 className="font-['Playfair_Display',serif] text-xl font-semibold text-[#f3d488] mb-5">
               Quick Links
             </h3>
@@ -184,7 +185,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/"
-                  className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center gap-2 group"
+                  className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center justify-center md:justify-start gap-2 group"
                 >
                   <span className="w-0 group-hover:w-4 h-px bg-[#e8b84b] transition-all duration-300"></span>
                   Home
@@ -193,7 +194,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/about"
-                  className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center gap-2 group"
+                  className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center justify-center md:justify-start gap-2 group"
                 >
                   <span className="w-0 group-hover:w-4 h-px bg-[#e8b84b] transition-all duration-300"></span>
                   About
@@ -202,7 +203,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/speakers"
-                  className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center gap-2 group"
+                  className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center justify-center md:justify-start gap-2 group"
                 >
                   <span className="w-0 group-hover:w-4 h-px bg-[#e8b84b] transition-all duration-300"></span>
                   Speakers
@@ -211,7 +212,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/gallery"
-                  className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center gap-2 group"
+                  className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center justify-center md:justify-start gap-2 group"
                 >
                   <span className="w-0 group-hover:w-4 h-px bg-[#e8b84b] transition-all duration-300"></span>
                   Gallery
@@ -220,7 +221,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/contact"
-                  className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center gap-2 group"
+                  className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center justify-center md:justify-start gap-2 group"
                 >
                   <span className="w-0 group-hover:w-4 h-px bg-[#e8b84b] transition-all duration-300"></span>
                   Contact
@@ -230,66 +231,62 @@ export default function Footer() {
           </div>
 
           {/* Column 3 - Legal */}
-       {/* Column 3 - Legal */}
-<div>
-  <h3 className="font-['Playfair_Display',serif] text-xl font-semibold text-[#f3d488] mb-5">
-    Legal
-  </h3>
+          <div className="text-center md:text-left">
+            <h3 className="font-['Playfair_Display',serif] text-xl font-semibold text-[#f3d488] mb-5">
+              Legal
+            </h3>
 
-  <ul className="space-y-3">
-    <li>
-      <Link
-        to="/privacy-policy"
-        className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center gap-2 group"
-      >
-        <span className="w-0 group-hover:w-4 h-px bg-[#e8b84b] transition-all duration-300"></span>
-        Privacy Policy
-      </Link>
-    </li>
-
-    <li>
-      <Link
-        to="/terms-conditions"
-        className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center gap-2 group"
-      >
-        <span className="w-0 group-hover:w-4 h-px bg-[#e8b84b] transition-all duration-300"></span>
-        Terms & Conditions
-      </Link>
-    </li>
-
-    <li>
-      <Link
-        to="/refund-policy"
-        className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center gap-2 group"
-      >
-        <span className="w-0 group-hover:w-4 h-px bg-[#e8b84b] transition-all duration-300"></span>
-        Refund Policy
-      </Link>
-    </li>
-
-    <li>
-      <Link
-        to="/faq"
-        className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center gap-2 group"
-      >
-        <span className="w-0 group-hover:w-4 h-px bg-[#e8b84b] transition-all duration-300"></span>
-        FAQ
-      </Link>
-    </li>
-  </ul>
-</div>
+            <ul className="space-y-3">
+              <li>
+                <Link
+                  to="/privacy-policy"
+                  className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center justify-center md:justify-start gap-2 group"
+                >
+                  <span className="w-0 group-hover:w-4 h-px bg-[#e8b84b] transition-all duration-300"></span>
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/terms-conditions"
+                  className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center justify-center md:justify-start gap-2 group"
+                >
+                  <span className="w-0 group-hover:w-4 h-px bg-[#e8b84b] transition-all duration-300"></span>
+                  Terms & Conditions
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/refund-policy"
+                  className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center justify-center md:justify-start gap-2 group"
+                >
+                  <span className="w-0 group-hover:w-4 h-px bg-[#e8b84b] transition-all duration-300"></span>
+                  Refund Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/faq"
+                  className="text-gray-300 hover:text-[#e8b84b] transition-colors text-base flex items-center justify-center md:justify-start gap-2 group"
+                >
+                  <span className="w-0 group-hover:w-4 h-px bg-[#e8b84b] transition-all duration-300"></span>
+                  FAQ
+                </Link>
+              </li>
+            </ul>
+          </div>
 
           {/* Column 4 - Newsletter */}
-          <div>
+          <div className="text-center md:text-left">
             <h3 className="font-['Playfair_Display',serif] text-xl font-semibold text-[#f3d488] mb-5">
               Newsletter
             </h3>
-            <p className="text-sm text-gray-400 leading-relaxed mb-4">
+            <p className="text-sm text-gray-400 leading-relaxed mb-4 max-w-md mx-auto md:mx-0">
               Subscribe to receive the latest updates, event announcements,
               speaker news, and renewable energy insights.
             </p>
 
-            <form className="space-y-3">
+            <form className="space-y-3 max-w-md mx-auto md:mx-0">
               <div className="relative">
                 <input
                   type="email"
@@ -316,7 +313,7 @@ export default function Footer() {
             </form>
 
             {/* Social Icons */}
-            <div className="flex gap-2.5 mt-6 pt-6 border-t border-[#e8b84b]/10">
+            <div className="flex gap-2.5 mt-6 pt-6 border-t border-[#e8b84b]/10 justify-center md:justify-start">
               <a
                 href="https://linkedin.com"
                 target="_blank"
@@ -365,8 +362,8 @@ export default function Footer() {
       {/* Bottom Footer */}
       <div className="border-t border-[#e8b84b]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-            <div className="flex items-center gap-4 text-xs text-gray-500">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-xs text-gray-500">
               <span>© 2024. All rights reserved to Electrical Mirror</span>
               <span className="hidden sm:inline w-px h-3 bg-[#e8b84b]/20"></span>
               <span className="hidden sm:inline">Design by Tresub Media</span>

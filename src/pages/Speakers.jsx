@@ -32,7 +32,7 @@ const stats = [
   { icon: Users, value: "20+", label: "Industry Speakers" },
   { icon: Globe, value: "4+", label: "Countries" },
   { icon: Calendar, value: "25+", label: "Technical Sessions" },
-  { icon: Users, value: "5000+", label: "Delegates" },
+  { icon: Users, value: "150+", label: "Delegates" },
 ];
 
 const speakers = [
