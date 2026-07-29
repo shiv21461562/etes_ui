@@ -9,7 +9,7 @@ const WhatsAppButton = () => {
   const [text2, setText2] = useState("");
   const [text3, setText3] = useState("");
 
-  const phone = "919876543210";
+  const phone = "919910228914";
 
   const msg1 = "👋 Hello!";
   const msg2 = "Welcome to ETES 2026.";

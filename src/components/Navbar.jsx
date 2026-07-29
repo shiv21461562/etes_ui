@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/logo.avif";
+import logo from "../assets/Logo.png";
 
 const menus = [
   { name: "HOME", path: "/" },
@@ -57,7 +57,7 @@ export default function Navbar() {
               <img
                 src={logo}
                 alt="Logo"
-                className="h-10 sm:h-12 md:h-10 object-contain transition-all duration-300 group-hover:scale-105"
+                className="h-10 sm:h-12 md:h-18 object-contain transition-all duration-300 group-hover:scale-105"
               />
             </Link>
 
