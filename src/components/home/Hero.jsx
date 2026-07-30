@@ -1,6 +1,7 @@
 import React from "react";
 import { Calendar, MapPin, Users } from "lucide-react";
 import heroImage from "../../assets/heroBG5.png";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -190,24 +191,35 @@ export default function Home() {
                 India&apos;s Premier Energy &amp; Technology Event
               </div>
 
-             <h1
-  style={{
-    fontFamily: "'Playfair Display', Georgia, serif",
-    fontWeight: 800,
-    fontSize: "clamp(1.8rem, 3.5vw, 3rem)",
-    lineHeight: 1.08,
-    color: "#ffffff",
-    textShadow: "0 2px 25px rgba(0,0,0,.8)",
-    margin: 0,
-  }}
->
-  Where Visionaries Meet, Ideas Ignite,
-  <span style={{ display: "block", color: "#f3d488" }}>
-    Innovation Transforms
-  </span>
-</h1>
+              <h1
+                style={{
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontWeight: 800,
+                  fontSize: "clamp(1.8rem, 3.5vw, 3rem)",
+                  lineHeight: 1.08,
+                  color: "#ffffff",
+                  textShadow: "0 2px 25px rgba(0,0,0,.8)",
+                  margin: 0,
+                }}
+              >
+                Where Visionaries Meet, Ideas Ignite,
+                <span style={{ display: "block", color: "#f3d488" }}>
+                  Innovation Transforms
+                </span>
+              </h1>
 
-              <div className="etes-tagline">
+              <div
+                className="etes-tagline"
+                style={{
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontWeight: 900,
+                  fontSize: "clamp(1.2rem, 2vw, 1.6rem)",
+                  color: "#f3d488",
+                  letterSpacing: "0.04em",
+                  textShadow:
+                    "0 1px 0 rgba(255,255,255,.15), 0 2px 6px rgba(0,0,0,.8)",
+                }}
+              >
                 Powering the Next Era of Energy!
               </div>
 
@@ -221,15 +233,17 @@ export default function Home() {
                   textShadow: "0 2px 18px rgba(0,0,0,.85)",
                 }}
               >
-                India&apos;s premier energy and electrical technology conference uniting policymakers, industry leaders, innovators, utilities, researchers, and solution providers to drive the next wave of digitalisation, sustainability, and intelligent power systems.
+                India&apos;s premier energy and electrical technology conference
+                uniting policymakers, industry leaders, innovators, utilities,
+                researchers, and solution providers to drive the next wave of
+                digitalisation, sustainability, and intelligent power systems.
               </p>
-
-              <div className="etes-cta-row">
-                <a href="#register" className="etes-btn-gold">
-                  <Calendar size={16} />
-                  Register Now
-                </a>
-              </div>
+<div className="etes-cta-row">
+  <Link to="/register" className="etes-btn-gold">
+    <Calendar size={16} />
+    Register Now
+  </Link>
+</div>
 
               {/* 3 small stat cards, below the CTA button */}
               <div className="etes-stat-cards">
@@ -265,7 +279,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>  
+        </section>
       </div>
     </div>
   );
