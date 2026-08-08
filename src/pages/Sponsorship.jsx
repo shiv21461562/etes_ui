@@ -231,7 +231,7 @@ export default function Sponsorship() {
                 </div>
 
                 <div>
-                  <h3 className="text-yellow-400 text-4xl font-bold">120+</h3>
+                  <h3 className="text-yellow-400 text-4xl font-bold">20+</h3>
 
                   <p className="text-gray-400">Exhibitors</p>
                 </div>

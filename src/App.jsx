@@ -23,6 +23,7 @@ import SponsorshipDetail from "./pages/SponsorshipDetail";
 import BookingForm from "./pages/BookingForm";
 import BackToTop from "./components/BackToTop";
 import WhatsAppButton from "./components/WhatsAppButton";
+// import AIChatBot from "./components/AIChatBot";
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -69,6 +70,7 @@ function App() {
       </Routes>
         <BackToTop />
           <WhatsAppButton />
+          {/* <AIChatBot /> */}
       <Footer />
     </>
   );

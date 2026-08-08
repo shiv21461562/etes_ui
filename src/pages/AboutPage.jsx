@@ -490,7 +490,7 @@ export default function AboutPage() {
               variants={fadeInLeft}
               className="mt-8 text-gray-600 leading-8 max-w-md"
             >
-              Join us at India Expo Centre &amp; Mart, Greater Noida, Delhi NCR.
+             Join us at SCOPE Complex, Lodhi Road, Institutional Area, Lodi Colony, New Delhi – 110003.
             </motion.p>
 
             <motion.div
@@ -534,6 +534,18 @@ export default function AboutPage() {
                 <p className="mt-2 text-gray-700">23rd SEP 2026</p>
               </div>
             </motion.div>
+            <motion.a
+  variants={fadeInLeft}
+  href="https://www.google.com/maps/search/?api=1&query=SCOPE+Complex,+Lodhi+Road,+Institutional+Area,+Lodi+Colony,+New+Delhi,+Delhi+110003"
+  target="_blank"
+  rel="noopener noreferrer"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="inline-flex items-center gap-2 mt-10 px-6 py-3 rounded-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold shadow-lg transition-all duration-300"
+>
+  <MapPin size={18} />
+  View on Google Maps
+</motion.a>
           </motion.div>
 
           <motion.div
@@ -547,7 +559,7 @@ export default function AboutPage() {
               transition={{ duration: 0.3 }}
               title="ETES venue map"
               className="rounded-3xl w-full h-[450px] border-2 border-yellow-200/50 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)]"
-              src="https://www.google.com/maps?q=India+Expo+Centre+Greater+Noida&output=embed"
+              src="https://www.google.com/maps?q=SCOPE+Complex,+Lodhi+Road,+Institutional+Area,+Lodi+Colony,+New+Delhi,+Delhi+110003&output=embed"
               loading="lazy"
             ></motion.iframe>
           </motion.div>

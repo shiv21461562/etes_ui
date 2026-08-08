@@ -109,7 +109,7 @@ export default function Venue() {
               </div>
 
            <a
-  href="https://share.google/IznAvKaoviB0M8O5f"
+  href="https://www.google.com/maps/search/?api=1&query=SCOPE+Complex,+Lodhi+Road,+Institutional+Area,+Lodi+Colony,+New+Delhi,+Delhi+110003"
   target="_blank"
   rel="noopener noreferrer"
   className="

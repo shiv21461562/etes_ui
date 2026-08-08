@@ -21,7 +21,7 @@ const features = [
   },
   {
     icon: Building2,
-    title: "500+ Brands",
+    title: "20+ Brands",
     desc: "Explore products and solutions from India's leading electrical companies.",
   },
   {

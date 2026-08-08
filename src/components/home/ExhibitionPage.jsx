@@ -32,6 +32,41 @@ const exhibitors = [
 export default function ExhibitorStall() {
   return (
     <section className="bg-white py-24">
+      <style>{`
+        .exhibitor-card {
+          position: relative;
+          width: 180px;
+          height: 100px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 14px;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          border: 2.5px solid transparent;
+          background: white;
+          padding: 16px;
+        }
+        
+        .exhibitor-card:hover {
+          border-color: #fbbf24;
+          transform: translateY(-8px) scale(1.04);
+          box-shadow: 0 16px 32px -12px rgba(245, 158, 11, 0.3), 
+                      0 4px 16px -8px rgba(0, 0, 0, 0.06);
+        }
+        
+        .exhibitor-card img {
+          transition: all 0.3s ease;
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: contain;
+        }
+        
+        .exhibitor-card:hover img {
+          transform: scale(1.05);
+        }
+      `}</style>
+
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Heading */}
@@ -66,7 +101,7 @@ export default function ExhibitorStall() {
               },
             },
           }}
-        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 lg:gap-3 place-items-center"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-5 place-items-center"
         >
           {exhibitors.map((item, index) => (
             <motion.div
@@ -81,17 +116,13 @@ export default function ExhibitorStall() {
                   y: 0,
                 },
               }}
-              whileHover={{
-                y: -8,
-                scale: 1.05,
-              }}
               transition={{ duration: 0.35 }}
-             className="w-[150px] h-[75px] flex items-center justify-center"
+              className="exhibitor-card"
             >
               <img
                 src={item.image}
                 alt={`Exhibitor ${index + 1}`}
-                className={`${item.width} h-auto object-contain transition-all duration-300`}
+                className={`${item.width} h-auto object-contain`}
               />
             </motion.div>
           ))}
