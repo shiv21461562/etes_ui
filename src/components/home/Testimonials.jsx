@@ -10,7 +10,7 @@ const testimonials = [
       "ETES provided an excellent platform to connect with industry leaders and generate quality business opportunities.",
   },
   {
-    name: "Amit Verma",
+    name: "Amit",
     company: "Schneider Electric",
     image: "https://randomuser.me/api/portraits/men/45.jpg",
     review:
